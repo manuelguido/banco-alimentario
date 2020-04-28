@@ -3,31 +3,26 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <title>Banco Alimentario</title>
+        <title>@yield('title')</title>
+        
         <!-- Styles -->
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
-        <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
-        <link href="{{ asset('css/mdb.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('fonts/fontawesome/css/all.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+        {{-- <script defer src="{{ asset('fonts/fontawesome/js/all.min.js') }}"></script> --}}
+        
         <!-- Custom -->
         @yield('header')
     </head>
-
-    <body @yield('onload')><!-- Para añadir funciones que corren al cargar el doc -->
-        @include('components.messages')
+    <body><!-- Para añadir funciones que corren al cargar el doc -->
         <div id="app">
+            @include('components.messages')
             @yield('content')
+            <script src="{{ asset('js/app.js') }}"></script>
+            <script src="{{ asset('js/custom.js') }}"></script>
         </div>
-        <script src="{{ asset('js/popper.min.js') }}"></script>
-        <script src="{{ asset('js/jquery.min.js') }}"></script>
-        <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-        <script src="{{ asset('js/mdb.min.js') }}"></script>
-        <script src="{{ asset('js/main.js') }}"></script>
-        <script type="text/javascript">
-            // Animations initialization
-            new WOW().init();
-        </script>
     </body>
 </html>

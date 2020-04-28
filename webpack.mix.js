@@ -11,5 +11,16 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css');
+mix.js('resources/js/app.js', 'public/js').sourceMaps();
+
+//Application scripts
+mix.js([
+    'resources/js/custom/main.js',
+    'resources/js/custom/lazysizes.min.js',
+    ], 'public/js/custom.js');
+
+//Application styles
+mix.styles([
+    'resources/css/lightseed.css'
+    //'resources/css/main.css'
+], 'public/css/app.css');
