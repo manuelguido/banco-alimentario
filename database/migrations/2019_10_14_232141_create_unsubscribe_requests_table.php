@@ -16,6 +16,7 @@ class CreateUnsubscribeRequestsTable extends Migration
         Schema::create('unsubscribe_requests', function (Blueprint $table) {
             $table->integer('giver_id')->unsigned();
             $table->foreign('giver_id')->references('id')->on('givers');
+            $table->string('reason');
             $table->boolean('status')->default(0);
         });
     }
