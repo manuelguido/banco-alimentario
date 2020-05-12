@@ -22,6 +22,10 @@ class CreateItemsTable extends Migration
             $table->foreign('category_id')->references('id')->on('categories');
             $table->integer('type_id')->unsigned();
             $table->foreign('type_id')->references('id')->on('types');
+            $table->bigInteger('amount');
+            //$table->integer('unit_of_measurement')->unsigned();
+            //$table->foreign('unit_of_measurement')->references('id')->on('unit_of_measurements');
+            $table->date('exp_date')->nullable()->default(NULL);
         });
     }
 

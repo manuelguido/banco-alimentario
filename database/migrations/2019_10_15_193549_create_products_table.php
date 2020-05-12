@@ -16,16 +16,15 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->bigIncrements('product_id');
             $table->timestamps();
+            $table->bigInteger('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');
             $table->string('name');
-            $table->bigInteger('amount');
-            $table->boolean('has_exp_date')->default(0);
-            $table->date('exp_date')->nullable()->default(NULL);
-            $table->bigInteger('category_id')->unsigned();
-            $table->foreign('category_id')->references('category_id')->on('product_categories');
-            $table->bigInteger('type_id')->unsigned();
-            $table->foreign('type_id')->references('type_id')->on('product_types');
-            $table->bigInteger('donation_id')->unsigned();
-            $table->foreign('donation_id')->references('donation_id')->on('donations');
+            $table->integer('category_id')->unsigned();
+            $table->foreign('category_id')->references('id')->on('categories');
+            $table->integer('type_id')->unsigned();
+            $table->foreign('type_id')->references('id')->on('types');
+            //$table->integer('unit_of_measurement')->unsigned();
+            //$table->foreign('unit_of_measurement')->references('id')->on('unit_of_measurements');
         });
     }
 
