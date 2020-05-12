@@ -18,9 +18,9 @@ class CreateItemsTable extends Migration
             $table->integer('donation_id')->unsigned();
             $table->foreign('donation_id')->references('id')->on('donations');
             $table->string('name');
-            $table->integer('category_id')->unsigned();
+            $table->smallInteger('category_id')->unsigned();
             $table->foreign('category_id')->references('id')->on('categories');
-            $table->integer('type_id')->unsigned();
+            $table->smallInteger('type_id')->unsigned();
             $table->foreign('type_id')->references('id')->on('types');
             $table->date('exp_date')->nullable()->default(NULL);
             $table->bigInteger('amount');
