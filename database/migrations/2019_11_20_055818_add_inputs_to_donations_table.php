@@ -14,7 +14,8 @@ class AddInputsToDonationsTable extends Migration
     public function up()
     {
         Schema::table('donations', function (Blueprint $table) {
-            $table->string('responsible_for_retirement');
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');
             $table->date('retirement_date')->nullable()->default(NULL);
             $table->time('retirement_time')->nullable()->default(NULL);
         });

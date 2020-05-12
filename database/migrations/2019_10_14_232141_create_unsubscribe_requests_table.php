@@ -14,10 +14,9 @@ class CreateUnsubscribeRequestsTable extends Migration
     public function up()
     {
         Schema::create('unsubscribe_requests', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->bigInteger('user_id');
+            $table->integer('giver_id')->unsigned();
+            $table->foreign('giver_id')->references('id')->on('givers');
             $table->boolean('status')->default(0);
-            $table->timestamps();
         });
     }
 
