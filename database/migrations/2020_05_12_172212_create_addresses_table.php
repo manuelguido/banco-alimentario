@@ -19,7 +19,7 @@ class CreateAddressesTable extends Migration
             $table->bigInteger('number');
             $table->bigInteger('floor')->nullable()->default(NULL);
             $table->string('apt')->nullable()->default(NULL);
-            $table->smallInteger('neighborhood_id')->unsigned();
+            $table->unsignedSmallInteger('neighborhood_id');
             $table->foreign('neighborhood_id')->references('id')->on('neighborhoods');
         });
     }

@@ -15,10 +15,10 @@ class CreateRejectionsTable extends Migration
     {
         Schema::create('rejections', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('donation_id')->unsigned();
+            $table->unsignedInteger('donation_id');
             $table->foreign('donation_id')->references('id')->on('donations');
             $table->text('reason');
-            $table->integer('user_id')->unsigned();
+            $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
         });
     }

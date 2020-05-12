@@ -15,7 +15,7 @@ class CreateGiversTable extends Migration
     {
         Schema::create('givers', function (Blueprint $table) {
             $table->smallIncrements('id');
-            $table->bigInteger('user_id')->unsigned();
+            $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('name');
             $table->bigInteger('cuit');

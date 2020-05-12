@@ -15,7 +15,7 @@ class CreateDonationsTable extends Migration
     {
         Schema::create('donations', function (Blueprint $table) {
             $table->increments('id');
-            $table->smallInteger('giver_id')->unsigned();
+            $table->unsignedSmallInteger('giver_id');
             $table->foreign('giver_id')->references('id')->on('givers');
             $table->string('status');
             $table->date('date_from')->nullable()->default(NULL);

@@ -16,12 +16,12 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->bigIncrements('product_id');
             $table->timestamps();
-            $table->bigInteger('user_id')->unsigned();
+            $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('name');
-            $table->smallInteger('category_id')->unsigned();
+            $table->unsignedSmallInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories');
-            $table->smallInteger('type_id')->unsigned();
+            $table->unsignedSmallInteger('type_id');
             $table->foreign('type_id')->references('id')->on('types');
         });
     }
