@@ -14,10 +14,9 @@ class CreateDonationsTable extends Migration
     public function up()
     {
         Schema::create('donations', function (Blueprint $table) {
-            $table->bigIncrements('donation_id');
-            $table->timestamps();
-            $table->bigInteger('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->bigIncrements('id');
+            $table->integer('giver_id')->unsigned();
+            $table->foreign('giver_id')->references('id')->on('givers');
             $table->string('status');
             $table->date('date_from')->nullable()->default(NULL);
             $table->date('date_to')->nullable()->default(NULL);
