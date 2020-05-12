@@ -1,9 +1,9 @@
 <template>
-    <label for="brand_id" class="text-lg-left black-b mb-1">
+    <label for="brand_id" class="text-lg-left black-b w300 ls03 mb-1">
         {{title}}
         <!-- Indica que el campo es requerido -->
-        <div v-if="req" class="req-tooltip seed-warning m-0 p-0">
-            (OB)<span class="req-tooltip-text h6 seed-warning-dark seed-bg-warning-light seed-rounded">Campo obligatorio</span>
+        <div v-if="req" class="req-tooltip seed-warning-dark m-0 p-0">
+            (Ob)<span class="req-tooltip-text seed-warning-dark w400 seed-rounded">Campo obligatorio</span>
         </div> 
     </label>
 </template>
@@ -20,7 +20,6 @@
 .req-tooltip .req-tooltip-text {
     visibility: hidden;
     width: 13em;
-    border: 2px solid var(--seed-warning-dark);
     color: #333;
     text-align: center;
     margin: -7px 0 0 10px;

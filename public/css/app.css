@@ -2,13 +2,13 @@
 :root {
     /* Main Pallete */
     --color-a: #f2713d;
-    --color-a-light: #ffa891;
+    --color-a-light: #ffecd7;
 
-    --color-b: #fbd8c9;
-    --color-b-light: #faeeea;
+    --color-b: #ffbc6d;
+    --color-b-light: #ffecd7;
     
-    --color-c: #5143de;
-    --color-c-light: #5143de;
+    --color-c: #5ca34a;
+    --color-c-light: #d1ebd0;
     
     --color-d: #80c7c1;
     --color-d-light: #1d252d;
@@ -41,9 +41,9 @@
     --seed-success-dark: #07b536;
     --seed-success-light: #E5FDF4;
 
-    --seed-warning: #F1BE25;
-    --seed-warning-dark: #ff8800;
-    --seed-warning-light: #FDF8E9;
+    --seed-warning: #F1BE25 !important;
+    --seed-warning-dark: #ff8800 !important;
+    --seed-warning-light: #FDF8E9 !important;
     
     --seed-danger: #F12559;
     --seed-danger-dark: #F12559;
@@ -83,6 +83,7 @@ html, body {
 /* Generics */
 .display-none { display: none !important;}
 .display-block { display: block !important;}
+.display-inline { display: inline !important;}
 .overflow-hidden { overflow: hidden !important; }
 .bg-none { background: none !important; }
 .shadow-none { box-shadow: none !important; }
@@ -196,7 +197,10 @@ a.link:hover {
 
 /*--------------------------------------------------------------
     Buttons
---------------------------------------------------------------*/ 
+--------------------------------------------------------------*/
+.btn i {
+    color: inherit !important;
+}
 /* Button border */
 .seed-rounded {
     border-radius: 50px !important;
@@ -291,62 +295,62 @@ a.link:hover {
 /* Button outline color */
 .seed-btn-outline-a {
     background-color: var(--color-a-light) !important;
-    border-color: var(--color-a) !important;
+    border: 2px solid  var(--color-a) !important;
     color: var(--color-a) !important;
 }
 .seed-btn-outline-b {
     background-color: var(--color-b-light) !important;
-    border-color: var(--color-b) !important;
+    border: 2px solid  var(--color-b) !important;
     color: var(--color-b) !important;
 }
 .seed-btn-outline-c {
     background-color: var(--color-c-light) !important;
-    border-color: var(--color-c) !important;
+    border: 2px solid var(--color-c) !important;
     color: var(--color-c) !important;
 }
 .seed-btn-outline-d {
     background-color: var(--color-d-light) !important;
-    border-color: var(--color-d) !important;
+    border: 2px solid var(--color-d) !important;
     color: var(--color-d) !important;
 }
 .seed-btn-outline-e {
     background-color: var(--color-e-light) !important;
-    border-color: var(--color-e) !important;
+    border: 2px solid var(--color-e) !important;
     color: var(--color-e) !important;
 }
 .seed-btn-outline-primary {
     background-color: var(--seed-primary-light) !important;
-    border: 1px solid var(--seed-primary) !important;
+    border: 2px solid var(--seed-primary) !important;
     color: var(--seed-primary) !important;
 }
 .seed-btn-outline-secondary {
     background-color: var(--seed-secondary-light) !important;
-    border-color: var(--seed-secondary) !important;
+    border: 2px solid var(--seed-secondary) !important;
     color: var(--seed-secondary) !important;
 }
 .seed-btn-outline-success {
     background-color: var(--seed-success-light) !important;
-    border-color: var(--seed-success) !important;
+    border: 2px solid var(--seed-success) !important;
     color: var(--seed-success) !important;
 }
 .seed-btn-outline-warning {
     background-color: var(--seed-warning-light) !important;
-    border-color: var(--seed-warning) !important;
+    border: 2px solid var(--seed-warning) !important;
     color: var(--seed-warning) !important;
 }
 .seed-btn-outline-danger {
     background-color: var(--seed-danger-light) !important;
-    border-color: var(--seed-danger) !important;
+    border: 2px solid var(--seed-danger) !important;
     color: var(--seed-danger) !important;
 }
 .seed-btn-outline-info {
     background-color: var(--seed-info-light) !important;
-    border-color: var(--seed-info) !important;
+    border: 2px solid var(--seed-info) !important;
     color: var(--seed-info) !important;
 }
 .seed-btn-outline-cancel {
     background-color: var(--seed-cancel-light) !important;
-    border-color: var(--seed-cancel) !important;
+    border: 2px solid var(--seed-cancel) !important;
     color: var(--seed-cancel) !important;
 }
 

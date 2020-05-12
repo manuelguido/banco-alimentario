@@ -8,21 +8,21 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>@yield('title')</title>
         
-        <!-- Styles -->
-        <link href="{{ asset('fonts/fontawesome/css/all.min.css') }}" rel="stylesheet">
+        <!-- Styles & Icons -->
+        <script defer src="{{ asset('fonts/fontawesome/js/all.min.js') }}"></script>
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <link href="{{ asset('css/main.css') }}" rel="stylesheet">
         {{-- <script defer src="{{ asset('fonts/fontawesome/js/all.min.js') }}"></script> --}}
         
-        <!-- Custom -->
+        <!-- Custom Header -->
         @yield('header')
     </head>
-    <body><!-- Para añadir funciones que corren al cargar el doc -->
+    <body>
         <div id="app">
             @include('components.messages')
             @yield('content')
+            <script src="{{ asset('js/custom.js') }}" async></script>
             <script src="{{ asset('js/app.js') }}"></script>
-            <script src="{{ asset('js/custom.js') }}"></script>
         </div>
     </body>
 </html>

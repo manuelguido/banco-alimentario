@@ -20,12 +20,3 @@
     @endif
 </div>
 <!-- /.Alertas -->
-
-<script>
-    $("#alert-success").fadeTo(3000, 500).slideUp(500, function(){
-        $("#alert-success").hide(500);
-    });
-    $("#alert-danger").fadeTo(3000, 500).slideUp(500, function(){
-        $("#alert-danger").slideUp(500);
-    });
-</script>

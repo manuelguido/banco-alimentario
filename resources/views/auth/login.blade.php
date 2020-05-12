@@ -4,16 +4,37 @@
 
 @section('content')
 
-<div class="container py-5">
-    <div class="row justify-content-center py-lg-5">
-        <div class="col-11 col-lg-8 py-5">
+<div class="container-fluid py-5">
+    <div class="row justify-content-center">
+        
+        <div class="col-12 text-lg-right">
+
+            <title-min title="Asociate como: "></title-min>
+
+            <seed-outline-button-rounded
+                color="primary"
+                size="md"
+                title="Donante"
+                url="{{ url('register/giver') }}"
+            ></seed-outline-button-rounded>
+
+            <seed-outline-button-rounded
+                color="a"
+                size="md"
+                title="Voluntario"
+                url="{{ url('register/volunteer') }}"
+            ></seed-outline-button-rounded>
+
+        </div>
+        
+        <div class="col-12 col-lg-5 py-5">
             <div class="card">
                 <div class="card-body p-5">
                     <div class="row justify-content-center">
                         
                         <auth-top-panel title="Iniciar sesión"></auth-top-panel>
 
-                        <auth-left-panel img_url="{{ asset('img/login.png') }}" ></auth-left-panel>
+                        <auth-left-panel img_url="{{ asset('img/login.png') }}"></auth-left-panel>
 
                         <div class="col-12 col-lg-7 pt-5">
                             <form method="POST" action="{{ route('login') }}">
@@ -38,18 +59,6 @@
                                         </span>
                                     @enderror
                                 </div>
-
-                                {{-- <div class="form-group row">
-                                    <div class="col-md-6 offset-md-4">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                            <label class="form-check-label" for="remember">
-                                                {{ __('Mantener sesión') }}
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div> --}}
 
                                 <auth-submit-button title="Entrar"></auth-submit-button>
 

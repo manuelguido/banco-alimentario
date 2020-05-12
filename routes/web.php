@@ -6,9 +6,12 @@
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index')->name('/home');
 Route::get('/contacto', 'HomeController@contactView')->name('contacto');
+
+//New users url
+Route::get('/register/{name}', 'PublicController@registerView')->where('name', '[A-Za-z]+')->name('register');
+
 Route::get('/register_volunteer', 'HomeController@registerVolunteerView');
 Route::post('/new_volunteer', 'HomeController@newVolunteer');
-
 
 /*--------------------------------------------------------------
     Autenticacion
@@ -66,3 +69,4 @@ Route::get('/admin_to_employee/{id}', 'AdminController@adminToEmployee');
 Route::get('/employee_to_admin/{id}', 'AdminController@employeeToAdmin');
 Route::get('/delete_user/{id}', 'AdminController@deleteUser');
 Route::post('/create_employee', 'AdminController@createEmployee');
+
