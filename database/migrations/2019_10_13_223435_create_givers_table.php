@@ -14,19 +14,13 @@ class CreateGiversTable extends Migration
     public function up()
     {
         Schema::create('givers', function (Blueprint $table) {
-            $table->increments('id');
+            $table->smallIncrements('id');
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('name');
             $table->bigInteger('cuit');
             $table->bigInteger('phone');
             $talbe->boolean('is_active')->default(0);
-            /*$table->string('address_street');
-            $table->bigInteger('address_number');
-            $table->bigInteger('address_floor')->nullable()->default(NULL);
-            $table->string('address_apartment')->nullable()->default(NULL);
-            $table->bigInteger('neighborhood_id')->unsigned();
-            $table->foreign('neighborhood_id')->references('neighborhood_id')->on('neighborhoods'); */
         });
     }
 

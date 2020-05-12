@@ -14,9 +14,8 @@ class CreateNeighborhoodsTable extends Migration
     public function up()
     {
         Schema::create('neighborhoods', function (Blueprint $table) {
-            $table->bigIncrements('neighborhood_id');
-            $table->string('name');
-            $table->timestamps();
+            $table->smallIncrements('id');
+            $table->string('name', 140);
         });
     }
 
