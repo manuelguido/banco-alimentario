@@ -22,17 +22,17 @@ class Giver extends Model
 
     public function user()
     {
-        return $this->belongsTo('App\User', 'user_id')->get();
+        return $this->belongsTo('App\User')->get();
     }
 
     public function peopleInCharge()
     {
-        return $this->hasMany('App\PersonInCharge', 'giver_person_in_charge', 'giver_id', 'people_in_charge_id')->get();
+        return $this->hasMany('App\GiverPersonInCharge', 'giver_id')->get();
     }
 
     public function addresses()
     {
-        return $this->hasMany('App\Address', 'address_giver', 'giver_id')->get();
+        return $this->hasMany('App\GiverAddress', 'giver_id')->get();
     }
 
     public function donations()

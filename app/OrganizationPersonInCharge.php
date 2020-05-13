@@ -21,7 +21,7 @@ class GiverPersonInCharge extends Model
 
     public function organization()
     {
-        return $this->hasOne('App\Organization', 'organization_id')->get()->first();
+        return $this->hasOne('App\Organization')->get()->first();
     }
 
 }
