@@ -7,25 +7,37 @@ use DB;
 
 class Giver extends Model
 {
+    /**
+    * Attributes
+    */
+    protected $table = 'givers';
+
+    protected $primaryKey = 'id';
+
     protected $fillable = [
-        'giver_id', 'user_id', 'company_name', 'company_cuit', 'company_phone', 'address_street', 'address_number', 'address_floor', 'address_apartment', 'neighborhood_id',
+        'user_id', 'name', 'cuit', 'phone', 'is_active',
     ];
 
-    public static function updateGiver($request, $id) {
-        //Actualizo en giver
-        DB::table('givers')
-            ->where('giver_id', $id)
-            ->update([
-                'company_name' => $request['company_name'],
-                'company_cuit' => $request['company-cuit'],
-                'company_phone' => $request['company-phone'],
-                'address_street' => $request['address-street'],
-                'address_number' => $request['address-number'],
-                'neighborhood_id' => $request['neighborhood'],
-            ]);
-    }
+    public $timestamps = false;
+
     public function user()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\User', 'user_id')->get();
     }
+
+    public function peopleInCharge()
+    {
+        return $this->hasMany('App\PersonInCharge', 'giver_person_in_charge', 'giver_id', 'people_in_charge_id')->get();
+    }
+
+    public function addresses()
+    {
+        return $this->hasMany('App\Address', 'address_giver', 'giver_id')->get();
+    }
+
+    public function donations()
+    {
+        return $this->hasMany('App\Donation', 'giver_id')->get();
+    }
+
 }

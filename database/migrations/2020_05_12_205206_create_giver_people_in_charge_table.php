@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePeopleInChargeTable extends Migration
+class CreateGiverPeopleInChargeTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,14 @@ class CreatePeopleInChargeTable extends Migration
      */
     public function up()
     {
-        Schema::create('people_in_charge', function (Blueprint $table) {
+        Schema::create('giver_people_in_charge', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->smallInteger('dni');
             $table->string('email');
             $table->smallInteger('phone');
+            $table->unsignedInteger('giver_id');
+            $table->foreign('giver_id')->references('id')->on('givers');
         });
     }
 
@@ -29,6 +31,6 @@ class CreatePeopleInChargeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('people_in_charge');
+        Schema::dropIfExists('giver_people_in_charge');
     }
 }
