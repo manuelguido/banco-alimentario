@@ -28,4 +28,5 @@ class Type extends Model
     {
         return $this->hasMany('App\Item', 'type_id')->get();
     }
+    
 }
