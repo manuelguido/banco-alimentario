@@ -14,7 +14,7 @@ class Address extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        'street', 'number', 'floor', 'apt', 'neighborhood_id', 'organization_id',
+        'street', 'number', 'floor', 'apt', 'neighborhood_id', 'giver_id',
     ];
 
     public $timestamps = false;
