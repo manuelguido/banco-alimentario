@@ -12,13 +12,17 @@ class User extends Authenticatable
     use Notifiable;
 
     /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
+     * Attributes
      */
+    protected $table = 'users';
+
+    protected $primaryKey = 'id';
+
     protected $fillable = [
-        'name', 'email', 'password', 'dni', 'phone', 'rol', 'isActive', 'isAccepted'
+        'name', 'email', 'phone', 'dni'
     ];
+
+    public $timestamps = false;
 
     /**
      * The attributes that should be hidden for arrays.
@@ -38,37 +42,19 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    //Retorna el nombre del tipo de empleado que es
-    public function getRolName() {
-        switch ($this->rol) {
-            case 'giver':
-                return "Donante";
-            case 'employee':
-                return "Empleado";
-        }
-    }
-
-    public static function updateUser($request, $id) {
-        //Actualizo en giver
-        DB::table('users')
-            ->where('id', $id)
-            ->update([
-                'name' => $request['name'],
-                'email' => $request['email'],
-                'dni' => $request['dni'],
-                'phone' => $request['phone'],
-            ]);
-    }
-
     public function giver()
     {
-        return $this->hasOne('App\Giver','giver_id');
+        return $this->hasOne('App\Giver', 'user_id')->get()->first();
     }
-    public function myGiver(){
-        return Giver::where('user_id', $this->id)->first();
+
+    public function organization()
+    {
+        return $this->hasOne('App\Organization', 'user_id')->get()->first();
     }
-    public function donations(){
-        return $this->hasMany('App\Donation');
+
+    public function roles()
+    {
+        return $this->hasMany('App\Role', 'role_user', 'user_id')->get();
     }
 
 }
