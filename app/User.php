@@ -12,14 +12,14 @@ class User extends Authenticatable
     use Notifiable;
 
     /**
-     * Attributes
-     */
+    * Attributes
+    */
     protected $table = 'users';
 
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        'name', 'email', 'phone', 'dni'
+        'name', 'email', 'phone', 'dni',
     ];
 
     public $timestamps = false;
