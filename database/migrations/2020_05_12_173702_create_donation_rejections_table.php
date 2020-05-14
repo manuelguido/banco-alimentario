@@ -14,7 +14,7 @@ class CreateDonationRejectionsTable extends Migration
     public function up()
     {
         Schema::create('donation_rejections', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
             $table->unsignedInteger('donation_id');
             $table->foreign('donation_id')->references('id')->on('donations');
             $table->text('reason');

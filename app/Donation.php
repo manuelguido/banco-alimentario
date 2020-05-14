@@ -26,23 +26,23 @@ class Donation extends Model
 
     public $timestamps = false;
 
-    public function giver(){
+    public function giver() {
         return $this->belongsTo('App\Giver', 'giver_id');
     }
 
-    public function items(){
+    public function items() {
         return $this->hasMany('App\Item', 'donation_id');
     }
 
-    public function note(){
+    public function note() {
         return $this->hasOne('App\DonationNote');
     }
 
-    public function rejection(){
+    public function rejection() {
         return $this->hasOne('App\DonationRejection');
     }
 
-    public function nearestExpiration(){
+    public function nearestExpiration() {
         return Product::where('donation_id', $this->id)->orderBy('exp_date', 'desc')->first();
     }
 
