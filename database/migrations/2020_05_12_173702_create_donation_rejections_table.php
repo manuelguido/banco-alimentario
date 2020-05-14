@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRejectionsTable extends Migration
+class CreateDonationRejectionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateRejectionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('rejections', function (Blueprint $table) {
+        Schema::create('donation_rejections', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedInteger('donation_id');
             $table->foreign('donation_id')->references('id')->on('donations');
@@ -30,6 +30,6 @@ class CreateRejectionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rejections');
+        Schema::dropIfExists('donation_rejections');
     }
 }

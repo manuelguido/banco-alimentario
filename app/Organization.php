@@ -21,7 +21,7 @@ class Organization extends Model
 
     public function user()
     {
-        return $this->belongsTo('App\User')->get();
+        return $this->belongsTo('App\User')->get()->first();
     }
 
     public function peopleInCharge()
@@ -32,11 +32,6 @@ class Organization extends Model
     public function addresses()
     {
         return $this->hasMany('App\OrganizationAddress', 'giver_id')->get();
-    }
-
-    public function donations()
-    {
-        return $this->hasMany('App\Donation', 'organization_id')->get();
     }
 
 }

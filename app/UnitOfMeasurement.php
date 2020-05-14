@@ -29,5 +29,4 @@ class UnitOfMeasurement extends Model
         return $this->hasMany('App\Item', 'unit_of_measurement_id')->get();
     }
 
-
 }
