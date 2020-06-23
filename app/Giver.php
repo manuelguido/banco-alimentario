@@ -40,4 +40,9 @@ class Giver extends Model
         return $this->hasMany('App\Donation', 'giver_id');
     }
 
+    public function unsubscribeRequest()
+    {
+        return $this->hasOne('App\UnsubscribeReques');
+    }
+
 }

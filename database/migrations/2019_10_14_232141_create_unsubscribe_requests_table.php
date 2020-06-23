@@ -17,7 +17,7 @@ class CreateUnsubscribeRequestsTable extends Migration
             $table->unsignedSmallInteger('giver_id');
             $table->foreign('giver_id')->references('id')->on('givers');
             $table->string('reason');
-            $table->boolean('status')->default(0);
+            $table->string('status');
         });
     }
 
