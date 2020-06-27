@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700&display=swap');
 :root {
     /* Main Pallete */
     --color-a: #f2713d;
@@ -12,20 +11,17 @@
     
     --color-d: #80c7c1;
     --color-d-light: #1d252d;
-    
-    --color-e: #1a202c;
-    --color-e-light: #0b0f40;
 
     /* White */
-    --white-a: #fff;
+    --white-a: #ffffff;
     --white-b: #e6e8ef;
     --white-c: #e6e8ef;
     --white-d: #e6e8ef;
 
     /* Black */
-    --black-a: #505565;
+    --black-a: #41444b;
     --black-b: #757a8b;
-    --black-c: #8c92a6;
+    --black-c: #2e3036;
     --black-d: #8c92a6;
 
     /* Traditional */
@@ -69,7 +65,7 @@ html {
     scroll-behavior: smooth !important;
 }
 body {
-    background: var(--white-b) !important;
+    background: var(--white-a) !important;
     overflow-x: hidden;
 }
 html, body {
@@ -313,11 +309,6 @@ a.link:hover {
     border: 2px solid var(--color-d) !important;
     color: var(--color-d) !important;
 }
-.seed-btn-outline-e {
-    background-color: var(--color-e-light) !important;
-    border: 2px solid var(--color-e) !important;
-    color: var(--color-e) !important;
-}
 .seed-btn-outline-primary {
     background-color: var(--seed-primary-light) !important;
     border: 2px solid var(--seed-primary) !important;
@@ -372,10 +363,6 @@ a.link:hover {
 .color-d { color: var(--color-d) !important;}
 .color-d-dark { color: var(--color-d-dark) !important;}
 .color-d-light { color: var(--color-d-light) !important;}
-
-.color-e { color: var(--color-e) !important;}
-.color-e-dark { color: var(--color-e-dark) !important;}
-.color-e-light { color: var(--color-e-light) !important;}
 
 /* White */
 .white-a { color: var(--white-a) !important; }
@@ -440,10 +427,6 @@ a.link:hover {
 .bg-color-d { background-color: var(--color-d) !important;}
 .bg-color-d-dark { background-color: var(--color-d-dark) !important;}
 .bg-color-d-light { background-color: var(--color-d-light) !important;}
-
-.bg-color-e { background-color: var(--color-e) !important;}
-.bg-color-e-dark { background-color: var(--color-e-dark) !important;}
-.bg-color-e-light { background-color: var(--color-e-light) !important;}
 
 /* White */
 .bg-white-a { background-color: var(--white-a) !important; }

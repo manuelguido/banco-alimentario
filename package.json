@@ -25,6 +25,8 @@
     },
     "dependencies": {
         "mdbvue": "^6.7.0",
-        "vue-stepper": "^1.4.2"
+        "vue-router": "^3.3.4",
+        "vue-stepper": "^1.4.2",
+        "vuetify": "^2.3.2"
     }
 }

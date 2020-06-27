@@ -9,7 +9,7 @@
         <title>@yield('title')</title>
         
         <!-- Styles & Icons -->
-        <script defer src="{{ asset('fonts/fontawesome/js/all.min.js') }}"></script>
+        {{-- <script defer src="{{ asset('fonts/fontawesome/js/all.min.js') }}"></script> --}}
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <link href="{{ asset('css/main.css') }}" rel="stylesheet">
         {{-- <script defer src="{{ asset('fonts/fontawesome/js/all.min.js') }}"></script> --}}
@@ -19,10 +19,8 @@
     </head>
     <body>
         <div id="app">
-            @include('components.messages')
             @yield('content')
-            <script src="{{ asset('js/custom.js') }}" async></script>
-            <script src="{{ asset('js/app.js') }}"></script>
         </div>
+        <script src="{{ asset('js/app.min.js') }}"></script>
     </body>
 </html>
