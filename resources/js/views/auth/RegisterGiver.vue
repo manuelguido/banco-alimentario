@@ -1,13 +1,13 @@
 <template>
-  <v-container class="cont" align="center" fill-height>
-    <v-row justify="center">
-        <v-col lg="7" xl="6">
-          <h1 class="h5 w400 text-black-b mb-6">Registrarte como donante</h1>
+  <div class="container-fluid cont">
+    <div class="row justify-content-center cont">
+        <div class="m-auto col-lg-8 col-xl-7">
+          <h1 class="h4 w400 mb-4">Registrarte como donante</h1>
           <giver-stepper></giver-stepper>
-        </v-col>
+        </div>
       <!-- </v-col> -->
-    </v-row>
-  </v-container>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -22,10 +22,10 @@ export default {
 
 <style scoped>
 .cont {
-  min-height: 50vh;
+  min-height: 100vh;
   align-content: center;
 }
-.row {
-  height: 80% !important;
+.cont .row {
+  min-height: 80vh;
 }
 </style>

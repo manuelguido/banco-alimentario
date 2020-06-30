@@ -211,6 +211,11 @@ a.link:hover {
 /*--------------------------------------------------------------
     Buttons
 --------------------------------------------------------------*/
+.btn {
+    font-weight: 400;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
 .btn i {
     color: inherit !important;
 }
@@ -604,3 +609,4 @@ input[type=text].ls-input, select.ls-input {
     border-radius: 4px;
     box-sizing: border-box;
 }
+

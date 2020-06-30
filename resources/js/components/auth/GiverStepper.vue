@@ -1,116 +1,92 @@
 <template>
-  <v-stepper v-model="e1">
-
-    <!-- Stepper Header -->
-    <v-stepper-header>
-
+  <div class="card stepper">
+    <!-- Card header -->
+    <div class="card-header">
       <!-- Steps -->
-      <v-stepper-step v-for="step in steps" :key="step.name"
-        editable
-        :step=step.number
-      >{{step.name}}</v-stepper-step>
-
-    </v-stepper-header>
-    <!-- /.Stepper Header -->
-
-    <!-- Stepper Items -->
-    <v-stepper-items>
-
-      <!-- Step 1 -->
-      <v-stepper-content step="1">
-
-        <div class="stepper-card">
-          <h2 class="h6 text-black-c my-4">Información de la organización</h2>
-          <v-text-field label="Main input" :rules="rules" hide-details="auto"></v-text-field>
+      <div class="steps row">
+        <!-- Step -->
+        <div
+          v-for="step in steps" :key="step.order"
+          class="step col-3"
+        >
+        <span class="step-order">{{step.order}}</span>
+        <span class="mobile-hide">{{step.name}}</span>
         </div>
 
-        <v-row>
-          <v-col cols="12" class="text-right">
-            <v-btn color="primary" @click="e1 = 2">Siguiente</v-btn>
-          </v-col>
-        </v-row>
-
-      </v-stepper-content>
-
-      <!-- Step 2 -->
-      <v-stepper-content step="2">
-        <v-card class="mb-12" color="grey lighten-1" height="400px"></v-card>
-
-        <v-row>
-          <v-col cols="6">
-            <v-btn class="ls-button-cancel" @click="e1 = 1"><i class="fas fa-chevron-left mr-3"></i>Atrás</v-btn>
-          </v-col>
-          <v-col cols="6" class="text-right">
-            <v-btn color="primary" @click="e1 = 3">Siguiente<i class="fas fa-chevron-right ml-3"></i></v-btn>
-          </v-col>
-        </v-row>
-      </v-stepper-content>
-
-      <!-- Step 3 -->
-      <v-stepper-content step="3">
-        <v-card class="mb-12" color="grey lighten-1" height="400px"></v-card>
-
-        <v-btn color="primary" @click="e1 = 4">Siguiente</v-btn>
-
-        <v-btn text>Cancel</v-btn>
-      </v-stepper-content>
-
-      <!-- Step 4 -->
-      <v-stepper-content step="4">
-        <v-card class="mb-12" color="grey lighten-1" height="400px"></v-card>
-
-        <v-btn color="primary" @click="submit">Enviar</v-btn>
-
-        <v-btn text>Cancel</v-btn>
-      </v-stepper-content>
-
-    </v-stepper-items>
-    <!-- /.Stepper Items -->
-
-  </v-stepper>
+      </div>
+    </div>
+    <!-- /.Card header -->
+    <!-- Card body -->
+    <div class="card-body">
+      <div class="stepper-content">
+        Contenido
+      </div>
+      <div class="stepper-control">
+        <div class="row justify-content-end">
+          <span class="btn waves-effect ls-button-success">Siguiente</span>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
-
 
 <script>
   export default {
+    name: 'GiverStepper',
     data () {
       return {
-        e1: 1,
+        el: 1,
+        steps: [
+          {
+            order: 1,
+            name: 'Organización'
+          },
+          {
+            order: 2,
+            name: 'Persona responsable'
+          },
+          {
+            order: 3,
+            name: 'Dirección'
+          },
+          {
+            order: 4,
+            name: 'Contraseña'
+          }
+        ]
       }
-    },
-  }
-</script>
-
-<script>
-export default {
-  data () {
-    return {
-      e1: 1,
-      steps: [
-        {
-          name: 'Organización',
-          number: 1
-        },
-        {
-          name: 'Persona responsable',
-          number: 2
-        },
-        {
-          name: 'Dirección',
-          number: 3
-        },
-        {
-          name: 'Contraseña',
-          number: 4
-        }
-      ]
     }
   }
-}
 </script>
 
 <style scoped>
-.stepper-card {
-  height: 400px;
+.steps {
+  text-align: center;
+  justify-content: center;
+}
+.step {
+  padding: 10px 40px;
+  cursor: pointer;
+}
+.step:hover {
+  background: #f7f9fa;
+}
+.step-order {
+  background: #eee;
+  border-radius: 50px;
+  height: 30px !important;
+  width: 30px !important;
+  padding: 3px;
+  display: inline-block;
+}
+.step-order.active {
+  background-color: var(--seed-success);
+}
+/* Stepper content */
+.stepper .card-body {
+  padding: 20px 60px;
+}
+.stepper-content {
+  min-height: 300px;
 }
 </style>

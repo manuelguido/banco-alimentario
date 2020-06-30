@@ -29,15 +29,10 @@ body {
 }
 
 /*--------------------------------------------------------------
-  Custom vuetify classes
+  Custom mdvue classes
 --------------------------------------------------------------*/
-.v-btn {
-  box-shadow: 0 1px .225em 0 rgba(0,0,0,.15) !important;
-  font-weight: 600 !important;
+.card-header {
+  background: #ffffff;
 }
-.v-btn:hover {
-  box-shadow: 0 1px .525em 0 rgba(0,0,0,.45) !important;
-}
-
 
 </style>
