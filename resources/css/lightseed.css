@@ -29,7 +29,7 @@
     --seed-secondary: #00C9A7;
     --seed-secondary-light: #A1ECDB;
 
-    --seed-success: #1be098;
+    --seed-success: #18cc8a;
     --seed-success-light: #E5FDF4;
 
     --seed-warning: #F1BE25 !important;
@@ -41,8 +41,8 @@
     --seed-info: #2CD2F6;
     --seed-info-light: #e9fafe;
     
-    --seed-cancel: #8c92a6;
-    --seed-cancel-light: #8c92a6;
+    --seed-cancel: #adb5cc;
+    --seed-cancel-light: #bac1d6;
 
     --seed-link: #4a4fd6;
     --seed-link-light: #4a4fd6;
@@ -212,7 +212,6 @@ a.link:hover {
     Buttons
 --------------------------------------------------------------*/
 .btn {
-    font-weight: 400;
     margin-left: 0 !important;
     margin-right: 0 !important;
 }

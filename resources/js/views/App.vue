@@ -31,8 +31,12 @@ body {
 /*--------------------------------------------------------------
   Custom mdvue classes
 --------------------------------------------------------------*/
+.btn {
+  padding: 9px 26px;
+  font-size: 15px;
+}
 .card-header {
-  background: #ffffff;
+  background: #fff;
 }
 
 </style>
