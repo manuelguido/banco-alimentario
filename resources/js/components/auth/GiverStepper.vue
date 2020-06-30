@@ -5,8 +5,7 @@
     <v-stepper-header>
 
       <!-- Steps -->
-      <v-stepper-step
-        v-for="step in steps" :key="step.name"
+      <v-stepper-step v-for="step in steps" :key="step.name"
         editable
         :step=step.number
       >{{step.name}}</v-stepper-step>
@@ -16,6 +15,8 @@
 
     <!-- Stepper Items -->
     <v-stepper-items>
+
+      <!-- Step 1 -->
       <v-stepper-content step="1">
 
         <div class="stepper-card">
@@ -31,6 +32,7 @@
 
       </v-stepper-content>
 
+      <!-- Step 2 -->
       <v-stepper-content step="2">
         <v-card class="mb-12" color="grey lighten-1" height="400px"></v-card>
 
@@ -44,6 +46,7 @@
         </v-row>
       </v-stepper-content>
 
+      <!-- Step 3 -->
       <v-stepper-content step="3">
         <v-card class="mb-12" color="grey lighten-1" height="400px"></v-card>
 
@@ -52,6 +55,7 @@
         <v-btn text>Cancel</v-btn>
       </v-stepper-content>
 
+      <!-- Step 4 -->
       <v-stepper-content step="4">
         <v-card class="mb-12" color="grey lighten-1" height="400px"></v-card>
 
