@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 import Home from '.././views/Home'
-import Error404 from '.././views/error/404'
+import Error404 from '.././views/error/Error404'
 
 const routes = [
   {
