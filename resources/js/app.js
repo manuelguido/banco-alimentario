@@ -1,18 +1,21 @@
 require('./bootstrap');
 
+//import '@fortawesome/fontawesome-free/css/all.min.css'
+import 'bootstrap-css-only/css/bootstrap.min.css';
+import 'mdbvue/lib/css/mdb.min.css';
+
+window.Vue = require('vue');
+
 // Vue, mainapp + router
 import Vue from 'vue'
 import App from './views/App'
 import router from './router'
 
-// Vuetift
-import Vuetify from 'vuetify'
-Vue.use(Vuetify);
-import 'vuetify/dist/vuetify.min.css'
+// Components
+Vue.component('navbar', require('./components/navigation/Navbar.vue').default);
 
 new Vue({
     el: '#app',
     components: { App },
-    router,
-    vuetify: new Vuetify(),
+    router
 }).$mount('#app')

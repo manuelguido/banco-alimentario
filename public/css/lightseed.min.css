@@ -1,6 +1,6 @@
 :root {
     /* Main Pallete */
-    --color-a: #03254c;
+    --color-a: #00dcd3;
     --color-a-light: #d0efff;
 
     --color-b: #1167b1;
@@ -18,9 +18,9 @@
     --white-c: #e6e8ef;
 
     /* Black */
-    --black-a: #41444b;
-    --black-b: #5b6170;
-    --black-c: #80838a;
+    --black-a: #1d252d;
+    --black-b: #41444b;
+    --black-c: #5b6170;
 
     /* Traditional */
     --seed-primary: #444BF8;
@@ -46,6 +46,10 @@
 
     --seed-link: #4a4fd6;
     --seed-link-light: #4a4fd6;
+
+    /* Rounded borders */
+    --full-rounded: 50px;
+    --semi-rounded: 6px;
 }
 
 /*--------------------------------------------------------------
@@ -70,6 +74,7 @@ html, body {
 .display-none { display: none !important;}
 .display-block { display: block !important;}
 .display-inline { display: inline !important;}
+.display-inline-block { display: inline-block !important;}
 .overflow-hidden { overflow: hidden !important; }
 .bg-none { background: none !important; }
 .shadow-none { box-shadow: none !important; }
@@ -149,9 +154,6 @@ input[type=number] {
 h1, h2, h3, h4, h5, h6, p, label {
     color: var(--black-a);
     font-weight: 400;
-}
-h1, h2, h3, h4, h5, h6, p, label, a, button, input {
-    font-family: 'Nunito', sans-serif !important;
 }
 /*--------------------------------------------------------------
     Font size
@@ -469,31 +471,31 @@ a.link:hover {
 
 /* Semi rounded border */
 .ls-s-rounded {
-    border-radius: 50px !important;
+    border-radius: var(--semi-rounded) !important;
 }
 .ls-s-rounded-top {
-    border-top-left-radius: 50px !important;
-    border-top-right-radius: 50px !important;
+    border-top-left-radius: var(--semi-rounded) !important;
+    border-top-right-radius: var(--semi-rounded) !important;
 }
 .ls-s-rounded-bottom {
-    border-bottom-left-radius: 50px !important;
-    border-bottom-right-radius: 50px !important;
+    border-bottom-left-radius: var(--semi-rounded) !important;
+    border-bottom-right-radius: var(--semi-rounded) !important;
 }
 .ls-s-rounded-left {
-    border-top-left-radius: 50px !important;
-    border-bottom-left-radius: 50px !important;
+    border-top-left-radius: var(--semi-rounded) !important;
+    border-bottom-left-radius: var(--semi-rounded) !important;
 }
 .ls-s-rounded-right {
-    border-top-right-radius: 50px !important;
-    border-bottom-right-radius: 50px !important;
+    border-top-right-radius: var(--semi-rounded) !important;
+    border-bottom-right-radius: var(--semi-rounded) !important;
 }
 .ls-s-rounded-invert-a {
-    border-top-right-radius: 50px !important;
-    border-bottom-left-radius: 50px !important;
+    border-top-right-radius: var(--semi-rounded) !important;
+    border-bottom-left-radius: var(--semi-rounded) !important;
 }
 .ls-s-rounded-invert-b {
-    border-top-left-radius: 50px !important;
-    border-bottom-right-radius: 50px !important;
+    border-top-left-radius: var(--semi-rounded) !important;
+    border-bottom-right-radius: var(--semi-rounded) !important;
 }
 
 /*--------------------------------------------------------------

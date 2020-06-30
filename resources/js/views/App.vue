@@ -1,7 +1,8 @@
 <template>
-  <v-app id="app">
+  <div id="app">
+    <navbar></navbar>
     <router-view/>
-  </v-app>
+  </div>
 </template>
 
 <script>
@@ -12,17 +13,19 @@ export default {
 
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css3?family=Nunito:wght@200;300;400;600;700&display=swap');
 
 #app {
-  font-family: 'Nunito', sans-serif !important;
-  background: var(--white-b) !important;
+  font-family: 'Nunito', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: left;
   color: #41444b;
   margin: 0;
   padding: 0;
+}
+body {
+  background-color: var(--white-b) !important;
 }
 
 /*--------------------------------------------------------------
