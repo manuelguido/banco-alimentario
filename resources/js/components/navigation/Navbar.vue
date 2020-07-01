@@ -1,5 +1,5 @@
 <template>
-  <mdb-navbar class="navigation fixed-top" color="none" light>
+  <mdb-navbar class="navigation fixed-top py-3 uns" color="none" light>
     <router-link class="ls-brand" to="/">Banco alimentario</router-link>
     <mdb-navbar-toggler>
       <mdb-navbar-nav right>
@@ -19,8 +19,8 @@
         </router-link>
         <!-- Login -->
         <router-link to="/login" class="btn btn-sm btn-login ls-s-rounded m-0 px-2">
-          <i class="fas fa-sign-in-alt fa-2x m-0"></i>
-          <span class="web-hide">Iniciar sesión</span>
+          <i class="fas fa-sign-in-alt m-0"></i>
+          <span class="ml-3 web-hide">Iniciar sesión</span>
         </router-link>
       </mdb-navbar-nav>
     </mdb-navbar-toggler>
@@ -115,5 +115,15 @@
 .btn-login {
   background-color: #313131;
   color: #fff !important;
+}
+@media (min-width: 992px) {
+  .btn-login i {
+    font-size: 22px;
+  }
+}
+@media (max-width: 992px) {
+  .btn-login i {
+    font-size: 12px;
+  }
 }
 </style>

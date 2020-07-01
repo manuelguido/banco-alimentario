@@ -14,6 +14,10 @@ import router from './router'
 // Components
 Vue.component('navbar', require('./components/navigation/Navbar.vue').default);
 
+// Titles
+Vue.component('h-title', require('./components/title/HTitle.vue').default);
+
+
 new Vue({
     el: '#app',
     components: { App },

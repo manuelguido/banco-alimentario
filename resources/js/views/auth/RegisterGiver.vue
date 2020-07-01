@@ -2,7 +2,9 @@
   <div class="container-fluid cont">
     <div class="row justify-content-center cont">
         <div class="m-auto col-lg-8 col-xl-7">
-          <h1 class="h4 w400 mb-4">Registrarte como donante</h1>
+          <!-- Title -->
+          <h-title size="4" text="Registrarte como donante"></h-title>
+          <!-- Stepper -->
           <giver-stepper></giver-stepper>
         </div>
       <!-- </v-col> -->
@@ -26,6 +28,6 @@ export default {
   align-content: center;
 }
 .cont .row {
-  min-height: 80vh;
+  min-height: 90vh;
 }
 </style>

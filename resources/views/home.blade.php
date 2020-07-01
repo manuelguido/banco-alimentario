@@ -7,7 +7,7 @@
     <title>Banco alimentario</title>
 
     <link href="https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css" rel="stylesheet">
-    <script defer src="{{ asset('fonts/fontawesome/js/all.min.js') }}"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
 
     <!-- Style -->
     <link href="{{ asset('css/app.min.css') }}" rel="stylesheet">
