@@ -1,6 +1,8 @@
 <template>
-  <mdb-navbar class="navigation fixed-top py-3 uns" color="none" light>
-    <router-link class="ls-brand" to="/">Banco alimentario</router-link>
+  <mdb-navbar class="navigation fixed-top py-2 uns" color="none" light>
+    <router-link class="ls-brand" to="/">
+      <img src="../../assets/logo.jpg" class="donate-image uns lazyload">
+    </router-link>
     <mdb-navbar-toggler>
       <mdb-navbar-nav right>
         <!-- Links -->
@@ -78,22 +80,21 @@
   background-color: var(--white-a);
   box-shadow: 0 1px .125em 0 rgba(0,0,0,.15) !important;
 }
+.navigation, .navigation * {
+  transition: 0s all !important;
+}
 /* Brand */
-.ls-brand {
-  color: var(--black-a);
-  font-size: 1.2em;
-  font-weight: 400;
-  text-decoration: none !important;
+.ls-brand img {
+  height: 70px;
 }
 .ls-brand:hover {
-  color: var(--black-c);
+  opacity: .8 !important;
 }
 
 .nav-item {
   color: var(--black-a);
   font-weight: 400;
   text-decoration: none !important;
-  transition: 0s all !important;
 }
 .nav-item:hover .nav-link {
   color: var(--black-c) !important;
