@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid cont">
-    <div class="row justify-content-center cont">
+    <div class="row cont-row justify-content-center cont">
         <div class="m-auto col-lg-8 col-xl-7">
           <!-- Title -->
           <h-title size="4" text="Registrarte como donante"></h-title>
@@ -27,7 +27,7 @@ export default {
   min-height: 100vh;
   align-content: center;
 }
-.cont .row {
+.cont-row {
   min-height: 90vh;
 }
 </style>

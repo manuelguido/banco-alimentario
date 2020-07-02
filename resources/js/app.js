@@ -17,6 +17,9 @@ Vue.component('navbar', require('./components/navigation/Navbar.vue').default);
 // Titles
 Vue.component('h-title', require('./components/title/HTitle.vue').default);
 
+// Forms
+Vue.component('form-label', require('./components/forms/Label.vue').default);
+
 
 new Vue({
     el: '#app',

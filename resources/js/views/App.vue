@@ -13,7 +13,7 @@ export default {
 
 
 <style>
-@import url('https://fonts.googleapis.com/css3?family=Nunito:wght@200;300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Nunito:wght@200;300;400;600;700&display=swap');
 
 #app {
   font-family: 'Nunito', sans-serif;
