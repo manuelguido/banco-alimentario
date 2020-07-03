@@ -85,7 +85,7 @@
 }
 /* Brand */
 .ls-brand img {
-  height: 70px;
+  height: 60px;
 }
 .ls-brand:hover {
   opacity: .8 !important;

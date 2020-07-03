@@ -2,9 +2,9 @@
   <div class="container-fluid cont">
     <div class="row cont-row justify-content-center">
         <div class="m-auto col-md-10 col-lg-8 col-xl-5">
-          
+
           <!-- Card -->
-          <div class="card">
+          <div class="card py-5">
             <!-- Card body -->
             <div class="card-body p-5">
               <div class="row justify-content-center px-4">
@@ -62,7 +62,7 @@ export default {
   align-content: center;
 }
 .cont-row {
-  min-height: 80vh;
+  min-height: 90vh;
 }
 .donate-image {
     width: 100%;

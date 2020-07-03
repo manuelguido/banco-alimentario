@@ -1,9 +1,12 @@
 <template>
   <div class="container-fluid cont">
-    <div class="row cont-row justify-content-center cont">
-        <div class="m-auto col-lg-8 col-xl-7">
+    <div class="row justify-content-center">
+        <div class="m-auto col-lg-8 col-xl-6">
           <!-- Title -->
-          <h-title size="4" text="Registrarte como donante"></h-title>
+          <h-title size="3" class="mb-3" text="Registrarte como donante en el sitio"></h-title>
+          <p class="text-black-c mb-5">
+            Así podrás comenzar a generar donaciones que serán distribuídas por el Banco Alimentario de La Plata
+          </p>
           <!-- Stepper -->
           <giver-stepper></giver-stepper>
         </div>
@@ -25,9 +28,6 @@ export default {
 <style scoped>
 .cont {
   min-height: 100vh;
-  align-content: center;
-}
-.cont-row {
-  min-height: 90vh;
+  padding-top: 15vh;
 }
 </style>
