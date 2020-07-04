@@ -1,5 +1,6 @@
 {
     "/js/app.min.js": "/js/app.min.js",
     "/css/app.min.css": "/css/app.min.css",
-    "/css/lightseed.min.css": "/css/lightseed.min.css"
+    "/css/lightseed.min.css": "/css/lightseed.min.css",
+    "/js/lazysizes.min.js": "/js/lazysizes.min.js"
 }

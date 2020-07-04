@@ -17,5 +17,6 @@
         <app></app>
     </div>
     <script src="{{ asset('js/app.min.js') }}"></script>
+    <script src="{{ asset('js/lazysizes.min.js') }}"></script>
 </body>
 </html>

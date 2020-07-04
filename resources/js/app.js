@@ -10,8 +10,15 @@ window.Vue = require('vue');
 import Vue from 'vue'
 import App from './views/App'
 import router from './router'
+import Waves from 'vue-waves-effect';
+import 'vue-waves-effect/dist/vueWavesEffect.css';
 
-// Components
+Vue.use(Waves);
+
+/*--------------------------------------------------------------
+    Components
+--------------------------------------------------------------*/
+// Navigation
 Vue.component('navbar', require('./components/navigation/Navbar.vue').default);
 
 // Titles

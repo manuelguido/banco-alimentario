@@ -1,10 +1,10 @@
 :root {
     /* Main Pallete */
-    --color-a: #00dcd3;
-    --color-a-light: #d0efff;
+    --color-a: #18cc8a;
+    --color-a-light: #5bcfa4;
 
-    --color-b: #1167b1;
-    --color-b-light: #d0efff;
+    --color-b: #fa9a6a;
+    --color-b-light: #fdb48b;
     
     --color-c: #187bcd;
     --color-c-light: #d0efff;
@@ -49,7 +49,7 @@
 
     /* Rounded borders */
     --full-rounded: 50px;
-    --semi-rounded: 6px;
+    --semi-rounded: 8px;
 }
 
 /*--------------------------------------------------------------
@@ -211,125 +211,185 @@ a.link:hover {
 /*--------------------------------------------------------------
     Buttons
 --------------------------------------------------------------*/
-.btn {
+.ls-btn {
     margin-left: 0 !important;
     margin-right: 0 !important;
+    box-sizing: content-box !important;
+    border-radius: 8px !important;
+    box-shadow: 0 1px 0 rgba(27,31,35,.04),inset 0 1px 0 hsla(0,0%,100%,.25) !important;
 }
-.btn i {
+.ls-btn i {
     color: inherit !important;
 }
+
 /* Colors */
-.ls-button-a {
+.ls-btn.color-a {
     background-color: var(--color-a) !important;
     border-color: var(--color-a) !important;
     color: var(--white-a) !important;
 }
-.ls-button-b {
+.ls-btn.color-b {
     background-color: var(--color-b) !important;
     border-color: var(--color-b) !important;
     color: var(--white-a) !important;
 }
-.ls-button-c {
+.ls-btn.color-c {
     background-color: var(--color-c) !important;
     border-color: var(--color-c) !important;
     color: var(--white-a) !important;
 }
-.ls-button-d {
+.ls-btn.color-d {
     background-color: var(--color-d) !important;
     border-color: var(--color-d) !important;
     color: var(--white-a) !important;
 }
-
-.ls-button-primary {
+.ls-btn.primary {
     background-color: var(--seed-primary) !important;
     border-color: var(--seed-primary) !important;
     color: var(--white-a) !important;
 }
-.ls-button-secondary {
+.ls-btn.secondary {
     background-color: var(--seed-secondary) !important;
     border-color: var(--seed-secondary) !important;
     color: var(--white-a) !important;
 }
-.ls-button-success {
+.ls-btn.success {
     background-color: var(--seed-success) !important;
     border-color: var(--seed-success) !important;
     color: var(--white-a) !important;
 }
-.ls-button-warning {
+.ls-btn.warning {
     background-color: var(--seed-warning) !important;
     border-color: var(--seed-warning) !important;
     color: var(--white-a) !important; 
 }
-.ls-button-danger {
+.ls-btn.danger {
     background-color: var(--seed-danger) !important;
     border-color: var(--seed-danger) !important;
     color: var(--white-a) !important;
 }
-.ls-button-info {
+.ls-btn.info {
     background-color: var(--seed-info) !important;
     border-color: var(--seed-info) !important;
     color: var(--white-a) !important;
 }
-.ls-button-cancel {
+.ls-btn.cancel {
     background-color: var(--seed-cancel) !important;
     border-color: var(--seed-cancel) !important;
     color: var(--white-a) !important;
 }
 
-/* Button outline color */
-.ls-button.outline-a {
+/* Light colors */
+.ls-btn.color-a-light {
     background-color: var(--color-a-light) !important;
-    border: 2px solid  var(--color-a) !important;
+    border-color: var(--color-a-light) !important;
+    color: var(--white-a) !important;
+}
+.ls-btn.color-b-light {
+    background-color: var(--color-b-light) !important;
+    border-color: var(--color-b-light) !important;
+    color: var(--white-a) !important;
+}
+.ls-btn.color-c-light {
+    background-color: var(--color-c-light) !important;
+    border-color: var(--color-c-light) !important;
+    color: var(--white-a) !important;
+}
+.ls-btn.color-d-light {
+    background-color: var(--color-d-light) !important;
+    border-color: var(--color-d-light) !important;
+    color: var(--white-a) !important;
+}
+.ls-btn.primary-light {
+    background-color: var(--seed-primary-light) !important;
+    border-color: var(--seed-primary-light) !important;
+    color: var(--white-a) !important;
+}
+.ls-btn.secondary-light {
+    background-color: var(--seed-secondary-light) !important;
+    border-color: var(--seed-secondary-light) !important;
+    color: var(--white-a) !important;
+}
+.ls-btn.success-light {
+    background-color: var(--seed-success-light) !important;
+    border-color: var(--seed-success-light) !important;
+    color: var(--white-a) !important;
+}
+.ls-btn.warning-light {
+    background-color: var(--seed-warning-light) !important;
+    border-color: var(--seed-warning-light) !important;
+    color: var(--white-a) !important; 
+}
+.ls-btn.danger-light {
+    background-color: var(--seed-danger-light) !important;
+    border-color: var(--seed-danger-light) !important;
+    color: var(--white-a) !important;
+}
+.ls-btn.info-light {
+    background-color: var(--seed-info-light) !important;
+    border-color: var(--seed-info-light) !important;
+    color: var(--white-a) !important;
+}
+.ls-btn.cancel-light {
+    background-color: var(--seed-cancel-light) !important;
+    border-color: var(--seed-cancel-light) !important;
+    color: var(--white-a) !important;
+}
+
+/* Button outline color */
+.ls-btn.outline-a {
+    background-color: var(--color-a-light) !important;
+    border: 1px solid var(--color-a) !important;
     color: var(--color-a) !important;
 }
-.ls-button.outline-b {
+.ls-btn.outline-b {
     background-color: var(--color-b-light) !important;
-    border: 2px solid  var(--color-b) !important;
+    border: 1px solid var(--color-b) !important;
     color: var(--color-b) !important;
 }
-.ls-button.outline-c {
+.ls-btn.outline-c {
     background-color: var(--color-c-light) !important;
-    border: 2px solid var(--color-c) !important;
+    border: 1px solid var(--color-c) !important;
     color: var(--color-c) !important;
 }
-.ls-button.outline-d {
+.ls-btn.outline-d {
     background-color: var(--color-d-light) !important;
-    border: 2px solid var(--color-d) !important;
+    border: 1px solid var(--color-d) !important;
     color: var(--color-d) !important;
 }
-.ls-button.outline-primary {
+.ls-btn.outline-primary {
     background-color: var(--seed-primary-light) !important;
-    border: 2px solid var(--seed-primary) !important;
+    border: 1px solid var(--seed-primary) !important;
     color: var(--seed-primary) !important;
 }
-.ls-button.outline-secondary {
+.ls-btn.outline-secondary {
     background-color: var(--seed-secondary-light) !important;
-    border: 2px solid var(--seed-secondary) !important;
+    border: 1px solid var(--seed-secondary) !important;
     color: var(--seed-secondary) !important;
 }
-.ls-button.outline-success {
+.ls-btn.outline-success {
     background-color: var(--seed-success-light) !important;
-    border: 2px solid var(--seed-success) !important;
+    border: 1px solid var(--seed-success) !important;
     color: var(--seed-success) !important;
 }
-.ls-button.outline-warning {
+.ls-btn.outline-warning {
     background-color: var(--seed-warning-light) !important;
-    border: 2px solid var(--seed-warning) !important;
+    border: 1px solid var(--seed-warning) !important;
     color: var(--seed-warning) !important;
 }
-.ls-button.outline-danger {
+.ls-btn.outline-danger {
     background-color: var(--seed-danger-light) !important;
-    border: 2px solid var(--seed-danger) !important;
+    border: 1px solid var(--seed-danger) !important;
     color: var(--seed-danger) !important;
 }
-.ls-button.outline-info {
+.ls-btn.outline-info {
     background-color: var(--seed-info-light) !important;
-    border: 2px solid var(--seed-info) !important;
+    border: 1px solid var(--seed-info) !important;
     color: var(--seed-info) !important;
 }
-.ls-button.outline-cancel {
+.ls-btn.outline-cancel {
     background-color: var(--seed-cancel-light) !important;
-    border: 2px solid var(--seed-cancel) !important;
+    border: 1px solid var(--seed-cancel) !important;
     color: var(--seed-cancel) !important;
 }
 
@@ -608,4 +668,3 @@ input[type=text].ls-input, select.ls-input {
     border-radius: 4px;
     box-sizing: border-box;
 }
-

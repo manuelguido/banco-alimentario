@@ -28,6 +28,7 @@
     "dependencies": {
         "mdbvue": "^6.7.0",
         "vue-router": "^3.3.4",
-        "vue-stepper": "^1.4.2"
+        "vue-stepper": "^1.4.2",
+        "vue-waves-effect": "^0.1.0"
     }
 }

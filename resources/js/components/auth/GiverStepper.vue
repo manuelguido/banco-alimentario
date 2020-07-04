@@ -12,7 +12,6 @@
           class="step"
           v-bind:class="step.order == el ? 'active' : '' "
           >
-          <!-- <span class="step-order mr-lg-1">{{step.order}}</span> -->
           <span class="step-order mr-lg-1"><i :class="step.icon"></i></span>
           <span class="step-name">{{step.name}}</span>
         </div>
@@ -25,11 +24,11 @@
     <div class="card-body">
 
       <!-- Content -->
-      <div class="stepper-content">
+      <form class="stepper-content" v-on:submit.prevent="register()">
         <!-- Row -->
         <div class="row justify-content-center">
           <!-- Col -->
-          <div class="col-12 col-lg-6">
+          <div class="col-12 col-lg-9 col-xl-7">
             <!-- Step 1  -->
             <div class="step-content">
               <h3 class="h5 mb-4">Datos de su organización</h3>
@@ -69,20 +68,25 @@
         </div>
         <!-- /.Row -->
 
-      </div>
+      </form>
       <!-- /.Stepper content -->
 
       <!-- Stepper control -->
       <div class="stepper-control">
-        <span v-if="el > 1" class="btn waves-effect ls-button-cancel" @click="back()">
-          <i class="fas fa-chevron-left mr-3"></i>
+        <span v-if="el > 1" class="btn ls-btn cancel" @click="back()" v-waves>
+          <i class="fas fa-chevron-left mr-2"></i>
           Atrás
         </span>
       
-        <span class="btn waves-effect ls-button-success float-right" @click="next()">
+        <span v-if="notFinished()" class="btn ls-btn color-b float-right" @click="next()" v-waves>
           {{next_text}}
-          <i v-if="notFinished()" class="fas fa-chevron-right ml-3"></i>
+          <i class="fas fa-chevron-right ml-2"></i>
         </span>
+
+        <button v-else type="submit "class="btn ls-btn color-a float-right" v-waves>
+          {{next_text}}
+        </button>
+
       </div>
     </div>
     <!-- /.Card body -->
@@ -91,12 +95,15 @@
 </template>
 
 <script>
+  import axios from 'axios'
   export default {
     name: 'GiverStepper',
     data () {
       return {
         el: 1,
         next_text: 'Siguiente',
+        loading: false,
+        message: '',
         steps: [
           {
             order: 1,
@@ -153,8 +160,9 @@
       },
       // Register the new user
       register () {
+        alert('asd')
         this.loading = true
-        this.status_message = ''
+        this.message = ''
         const path = '/api/giver/register'
         axios.post(path, {
           email: this.user.email,
@@ -165,7 +173,7 @@
             window.location.href = '/dashboard'
           } else {
             this.loading = false
-            this.status_message = res.data.message
+            this.message = res.data.message
           }
         }).catch((err) => {
           console.log(err)
@@ -226,7 +234,7 @@
   background: #eee;
 }
 .stepper .step.active .step-order {
-  background-color: var(--seed-success);
+  background-color: var(--color-b);
   color: #fff;
 }
 

@@ -31,12 +31,16 @@ body {
 /*--------------------------------------------------------------
   Custom mdvue classes
 --------------------------------------------------------------*/
-/* .btn {
-  padding: 9px 26px;
-  font-size: 15px;
-} */
+.card {
+  border-radius: 8px !important;
+}
 .card-header {
   background: #fff;
+  border-top-left-radius: 8px !important;
+  border-top-right-radius: 8px !important;
 }
-
+.card-body {
+  border-bottom-left-radius: 8px !important;
+  border-bottom-right-radius: 8px !important;
+}
 </style>
