@@ -14,10 +14,10 @@ class CreatePermissionRoleTable extends Migration
     public function up()
     {
         Schema::create('permission_role', function (Blueprint $table) {
-            $table->unsignedSmallInteger('role_id');
-            $table->foreign('role_id')->references('id')->on('roles');
-            $table->unsignedInteger('permission_id');
-            $table->foreign('permission_id')->references('id')->on('permissions');
+            $table->unsignedTinyInteger('role_id');
+            $table->foreign('role_id')->references('role_id')->on('roles');
+            $table->unsignedSmallInteger('permission_id');
+            $table->foreign('permission_id')->references('permission_id')->on('permissions');
         });
     }
 
