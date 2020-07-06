@@ -21,10 +21,10 @@ class CreateAddressesTable extends Migration
             $table->string('apt', 4);
             // Neighborhood key
             $table->unsignedInteger('neighborhood_id')->unique();
-            $table->foreign('neighborhood_id')->references('neighborhood_id')->on('neighborhoods')->onDelete('cascade');
+            $table->foreign('neighborhood_id')->references('neighborhood_id')->on('neighborhoods');
             // Institution key
             $table->unsignedInteger('institution_id')->unique();
-            $table->foreign('institution_id')->references('institution_id')->on('institutions')->onDelete('cascade');
+            $table->foreign('institution_id')->references('institution_id')->on('institutions');
         });
     }
 
