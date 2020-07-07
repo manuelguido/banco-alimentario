@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUnitsOfMeasurementTable extends Migration
+class AddTypeIdToCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateUnitsOfMeasurementTable extends Migration
      */
     public function up()
     {
-        Schema::create('units_of_measurement', function (Blueprint $table) {
-            $table->tinyIncrements('unit_of_measurement_id');
-            $table->string('unit_of_measurement', 40);
+        Schema::table('categories', function (Blueprint $table) {
+            $table->unsignedSmallInteger('type_id')->unique();
+            $table->foreign('type_id')->references('type_id')->on('types');
         });
     }
 
@@ -26,6 +26,8 @@ class CreateUnitsOfMeasurementTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('units_of_measurements');
+        Schema::table('categories', function (Blueprint $table) {
+            //
+        });
     }
 }
