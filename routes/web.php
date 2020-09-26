@@ -1,7 +1,7 @@
 <?php
 
 // SPA
-Route::get('/{any?}', 'PublicController@index')->name('home');
+Route::get('/{any?}', 'SpaController@index')->name('home');
 
 // /*--------------------------------------------------------------
 //     Vistas publicas
