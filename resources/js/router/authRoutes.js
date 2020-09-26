@@ -1,6 +1,5 @@
-import axios from 'axios'
-
 import Login from '.././views/auth/Login'
+import Logout from '.././views/auth/Logout'
 import RegisterGiver from '.././views/auth/RegisterGiver'
 import RegisterVolunteer from '.././views/auth/RegisterVolunteer'
 import RegisterOrganization from '.././views/auth/RegisterOrganization'
@@ -8,23 +7,43 @@ import RegisterOrganization from '.././views/auth/RegisterOrganization'
 const routes = [
   {
     path: '/login',
-    name: 'Login',
-    component: Login
+    name: 'login',
+    component: Login,
+    meta: {
+      requiresVisitor: true,
+    }
   },
   {
-    path: '/register_giver',
+    path: '/logout',
+    name: 'logout',
+    component: Logout,
+    meta: {
+      requiresAuth: true,
+    }
+  },
+  {
+    path: '/register/giver',
     name: 'RegisterGiver',
-    component: RegisterGiver
+    component: RegisterGiver,
+    meta: {
+      requiresVisitor: true,
+    }
   },
   {
-    path: '/register_volunteer',
+    path: '/register/volunteer',
     name: 'RegisterVolunteer',
-    component: RegisterVolunteer
+    component: RegisterVolunteer,
+    meta: {
+      requiresVisitor: true,
+    }
   },
   {
-    path: '/register_organization',
+    path: '/register/organization',
     name: 'RegisterOrganization',
-    component: RegisterOrganization
+    component: RegisterOrganization,
+    meta: {
+      requiresVisitor: true,
+    }
   }
 ]
 

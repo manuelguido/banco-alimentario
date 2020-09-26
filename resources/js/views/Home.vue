@@ -1,7 +1,16 @@
 <template>
-    <div class="container text-center">
-        esta es la página de inicio
-    </div>
+  <div>
+    <navbar></navbar>
+    <main>
+      <div class="container">
+        <div class="row py-5">
+          <div class="col-12 py-5">
+            Inicio
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
 </template>
 
 <script>

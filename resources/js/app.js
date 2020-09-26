@@ -8,8 +8,9 @@ window.Vue = require('vue');
 
 // Vue, mainapp + router
 import Vue from 'vue'
-import App from './views/App'
 import router from './router'
+import store from './store'
+import App from './views/App'
 import Waves from 'vue-waves-effect';
 import 'vue-waves-effect/dist/vueWavesEffect.css';
 
@@ -28,8 +29,9 @@ Vue.component('h-title', require('./components/title/HTitle.vue').default);
 Vue.component('form-label', require('./components/forms/Label.vue').default);
 
 
-new Vue({
+const app = new Vue({
     el: '#app',
     components: { App },
-    router
-}).$mount('#app')
+    router,
+    store
+});

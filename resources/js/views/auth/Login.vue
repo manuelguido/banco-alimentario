@@ -20,15 +20,19 @@
                   <!-- Title -->
                   <h-title size="3" text="Iniciar sesión" class="mb-5 text-center text-lg-left"></h-title>
 
-                  <form>
+                  <p v-if="error" class="text-center danger">
+                    {{error.message}}
+                  </p>
+
+                  <form autocomplete="off" @submit.prevent="login" method="post">
                     <div class="form-group mb-4">
                       <form-label for="password" title="Email"></form-label>
-                      <input type="email" class="form-control" name="email" placeholder="enterprise@dominio.com" required autofocus>
+                      <input type="email" class="form-control" placeholder="enterprise@dominio.com" v-model="username" required autofocus>
                     </div>
 
                     <div class="form-group mb-4">
                       <form-label for="password" title="Contraseña"></form-label>
-                      <input type="password" class="form-control" name="password" placeholder="Contraseña" required autofocus>
+                      <input type="password" class="form-control" v-model="password" placeholder="Contraseña" required autofocus>
                     </div>
 
                     <div class="form-group row mb-0 justify-content-end mt-5">
@@ -52,8 +56,29 @@
 
 <script>
 export default {
-  name: 'Login'
-}
+  data() {
+    return {
+      username: null,
+      password: null,
+      error: null
+    };
+  },
+  methods: {
+    login() {
+      this.$store
+        .dispatch("retrieveToken", {
+          username: this.username,
+          password: this.password
+        })
+        .then(response => {
+          this.$router.push({ name: "dashboard" });
+        })
+        .catch(error => {
+          this.error = error.response.data;
+        });
+    }
+  }
+};
 </script>
 
 <style scoped>
