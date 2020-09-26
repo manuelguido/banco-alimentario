@@ -15,17 +15,27 @@ class UnsubscribeRequest extends Model
     */
     protected $table = 'unsubscribe_requests';
 
-    protected $primaryKey = 'id';
+    protected $primaryKey = 'unsubscribe_request_id';
 
     protected $fillable = [
-        'user_id', 'status', 'reason'
+        'user_id', 'confirmer_id', 'reason',
     ];
 
     public $timestamps = false;
 
-    public function giver()
+    public function user()
     {
-        return $this->belongsTo('App\Giver');
+        return $this->belongsTo('App\User', 'user_id', 'user_id');
+    }
+
+    public function confirmer()
+    {
+        return $this->belongsTo('App\User', 'user_id', 'confirmer_id');
+    }
+
+    public function unsubscribe_requests()
+    {
+        return $this->belongsTo('App\UnsubscribeState', 'unsubscribe_state_id', 'unsubscribe_state_id');
     }
 
 }

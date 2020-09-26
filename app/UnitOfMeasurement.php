@@ -11,22 +11,17 @@ class UnitOfMeasurement extends Model
     */
     protected $table = 'units_of_measurement';
 
-    protected $primaryKey = 'id';
+    protected $primaryKey = 'unit_of_measurement_id';
 
     protected $fillable = [
-        'name',
+        'unit_of_measurement',
     ];
 
     public $timestamps = false;
 
     public function products()
     {
-        return $this->hasMany('App\Product', 'unit_of_measurement_id')->get();
-    }
-
-    public function items()
-    {
-        return $this->hasMany('App\Item', 'unit_of_measurement_id')->get();
+        return $this->hasMany('App\Product', 'unit_of_measurement_id', 'unit_of_measurement_id');
     }
 
 }

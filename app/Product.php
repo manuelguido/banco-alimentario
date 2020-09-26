@@ -11,32 +11,43 @@ class Product extends Model
     */
     protected $table = 'products';
 
-    protected $primaryKey = 'id';
+    protected $primaryKey = 'product_id';
 
     protected $fillable = [
-        'donation_id', 'name', 'category_id', 'type_id', 'unit_of_measurement_id',
+        'product', 'category_id', 'unit_of_measurement_id', 'is_refrigerable',
     ];
 
     public $timestamps = false;
 
-    public function giver()
+    /**
+     * Returns the frequent product
+     */
+    public function frequent_product()
     {
-        return $this->belongsTo('App\Donation');
+        return $this->belongsTo('App\FrequentProduct', 'product_id', 'product_id');
     }
 
+    /**
+     * Item
+     */
+    public function item()
+    {
+        return $this->belongsTo('App\Item', 'product_id', 'product_id');
+    }
+
+    /**
+     * Returns the frequent product
+     */
     public function category()
     {
-        return $this->hasOne('App\Category', 'category_id');
-    }
-
-    public function type()
-    {
-        return $this->hasOne('App\Type', 'type_id');
+        return $this->belongsTo('App\Category', 'category_id', 'category_id');
     }
     
+    /**
+     * Returns the unit of measurement
+     */
     public function unit_of_measurement()
     {
-        return $this->hasOne('App\UnitOfMeasurement', 'unit_of_measurement_id');
+        return $this->belongsTo('App\UnitOfMeasurement', 'unit_of_measurement_id', 'unit_of_measurement_id');
     }
-
 }

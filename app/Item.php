@@ -11,32 +11,27 @@ class Item extends Model
     */
     protected $table = 'items';
 
-    protected $primaryKey = 'id';
+    protected $primaryKey = 'product_id';
 
     protected $fillable = [
-        'donation_id', 'name', 'category_id', 'type_id', 'exp_date', 'amount', 'unit_of_measurement_id',
+        'donation_id', 'amount',
     ];
 
     public $timestamps = false;
 
     public function donation()
     {
-        return $this->belongsTo('App\Donation');
+        return $this->belongsTo('App\Donation', 'donation_id', 'donation_id');
     }
 
-    public function category()
+    public function product()
     {
-        return $this->hasOne('App\Category', 'category_id');
+        return $this->hasOne('App\Product', 'product_id', 'product_id');
     }
 
-    public function type()
+    public function expiration_date()
     {
-        return $this->hasOne('App\Type', 'type_id');
-    }
-
-    public function unit_of_measurement()
-    {
-        return $this->hasOne('App\UnitOfMeasurement', 'unit_of_measurement_id');
+        return $this->hasOne('App\ExpirationDate', 'product_id', 'product_id');
     }
     
 }

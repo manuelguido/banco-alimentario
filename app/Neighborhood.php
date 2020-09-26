@@ -12,7 +12,7 @@ class Neighborhood extends Model
     */
     protected $table = 'neighborhoods';
 
-    protected $primaryKey = 'id';
+    protected $primaryKey = 'neighborhood_id';
 
     protected $fillable = [
         'name',
@@ -20,14 +20,9 @@ class Neighborhood extends Model
 
     public $timestamps = false;
 
-    public function giverAddresses()
+    public function addresses()
     {
-        return $this->hasMany('App\GiverAddress', 'neighborhood_id')->get();
-    }
-
-    public function organizationAddresses()
-    {
-        return $this->hasMany('App\OrganizationAddress', 'neighborhood_id')->get();
+        return $this->hasMany('App\Institution', 'neighborhood_id', 'neighborhood_id');
     }
 
 }

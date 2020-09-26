@@ -4,17 +4,17 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class DonationNote extends Model
+class DonationState extends Model
 {
     /**
     * Attributes
     */
-    protected $table = 'donation_notes';
+    protected $table = 'donation_states';
 
     protected $primaryKey = 'donation_id';
 
     protected $fillable = [
-        'note',
+        'state',
     ];
 
     public $timestamps = false;

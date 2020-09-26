@@ -6,7 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Role extends Model
 {
-
+    const ROLE_ADMIN = 'Administrador'; //Cargando items
+    const ROLE_EMPLOYEE = 'Empleado'; //Sin agregar hora de retiro
+    const ROLE_GIVER = 'Donante'; //Rechadaza por el banco
+    const ROLE_ORGANIZATION = 'Organizacion'; //Ya enviada para su aprobación
+    
     /**
     * Attributes
     */

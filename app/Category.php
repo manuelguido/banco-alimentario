@@ -11,22 +11,22 @@ class Category extends Model
     */
     protected $table = 'categories';
 
-    protected $primaryKey = 'id';
+    protected $primaryKey = 'category_id';
 
     protected $fillable = [
-        'name',
+        'category', 'type_id',
     ];
 
     public $timestamps = false;
 
     public function products()
     {
-        return $this->hasMany('App\Product', 'category_id')->get();
+        return $this->hasMany('App\Product', 'category_id', 'category_id');
     }
 
-    public function items()
+    public function type()
     {
-        return $this->hasMany('App\Item', 'category_id')->get();
+        return $this->belongsTo('App\Type', 'type_id', 'type_id');
     }
 
 }

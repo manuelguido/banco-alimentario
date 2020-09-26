@@ -11,16 +11,19 @@ class Rejection extends Model
     */
     protected $table = 'donation_rejections';
 
-    protected $primaryKey = 'id';
+    protected $primaryKey = 'donation_id';
 
     protected $fillable = [
-        'reason',
+        'reason', 'rejecter_id',
     ];
 
     public $timestamps = false;
 
     public function donation() {
-        return $this->belongsTo('App\Donation', 'donation_id');
+        return $this->belongsTo('App\Donation', 'donation_id', 'donation_id');
     }
 
+    public function rejecter() {
+        return $this->belongsTo('App\Donation', 'user_id', 'rejecter_id');
+    }
 }

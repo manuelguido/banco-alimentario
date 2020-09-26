@@ -6,44 +6,53 @@ use Illuminate\Database\Eloquent\Model;
 
 class Donation extends Model
 {
-    const ESTADO_CREANDO = 'Creando'; //Cargando items
-    const ESTADO_FINALIZANDO = 'Finalizando'; //Sin agregar hora de retiro
-    const ESTADO_VIGENTE = 'Vigente'; //Ya enviada para su aprobación
-    const ESTADO_RECHAZADO = 'Rechazada'; //Rechadaza por el banco
-    const ESTADO_ACEPTADO = 'Aceptada';  //Aceptada por el banco
-    const ESTADO_COMPLETADO = 'Completada'; //Ya entregada al banco alimentario
-
     /**
     * Attributes
     */
     protected $table = 'donations';
 
-    protected $primaryKey = 'id';
+    protected $primaryKey = 'donation_id';
 
     protected $fillable = [
-        'giver_id', 'status', 'date_from', 'date_to', 'time_from', 'time_to',
+        'user_id', 'user_responsable_id', 'donation_state_id', 'code',
     ];
 
     public $timestamps = false;
 
     public function giver() {
-        return $this->belongsTo('App\Giver', 'giver_id');
+        return $this->belongsTo('App\Giver', 'user_id', 'user_id');
     }
 
     public function items() {
-        return $this->hasMany('App\Item', 'donation_id');
+        return $this->hasMany('App\Item', 'donation_id', 'donation_id');
     }
 
     public function note() {
-        return $this->hasOne('App\DonationNote');
+        return $this->hasOne('App\DonationNote', 'donation_id', 'donation_id');
     }
 
     public function rejection() {
-        return $this->hasOne('App\DonationRejection');
+        return $this->hasOne('App\DonationRejection', 'donation_id', 'donation_id');
     }
 
-    public function nearestExpiration() {
-        return Product::where('donation_id', $this->id)->orderBy('exp_date', 'desc')->first();
+    public function state() {
+        return $this->hasOne('App\DonationState', 'donation_id', 'donation_id');
     }
+
+    public function retirement() {
+        return $this->hasOne('App\DonationRetirement', 'donation_id', 'donation_id');
+    }
+
+    public function retirement_dates() {
+        return $this->hasMany('App\DonationDates', 'donation_id', 'donation_id');
+    }
+
+    public function responsable() {
+        return $this->hasMany('App\DonationDates', 'donation_id', 'donation_id');
+    }
+
+    // public function nearestExpiration() {
+    //     return Product::where('donation_id', $this->donation_id)->orderBy('exp_date', 'desc')->first();
+    // }
 
 }

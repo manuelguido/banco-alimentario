@@ -11,22 +11,18 @@ class Type extends Model
     */
     protected $table = 'types';
 
-    protected $primaryKey = 'id';
+    protected $primaryKey = 'type_id';
 
     protected $fillable = [
-        'name',
+        'type',
     ];
 
     public $timestamps = false;
 
-    public function products()
-    {
-        return $this->hasMany('App\Product', 'type_id')->get();
-    }
 
-    public function items()
+    public function category()
     {
-        return $this->hasMany('App\Item', 'type_id')->get();
+        return $this->hasMany('App\Category', 'type_id', 'type_id');
     }
     
 }

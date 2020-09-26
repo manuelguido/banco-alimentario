@@ -12,37 +12,35 @@ class Giver extends Model
     */
     protected $table = 'givers';
 
-    protected $primaryKey = 'id';
+    protected $primaryKey = 'user_id';
 
     protected $fillable = [
-        'user_id', 'name', 'cuit', 'phone', 'is_active',
+        'user_id',
     ];
 
     public $timestamps = false;
 
+    /**
+     * Returns the user
+     */
     public function user()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\User', 'user_id', 'user_id');
     }
 
-    public function peopleInCharge()
-    {
-        return $this->hasMany('App\GiverPersonInCharge', 'giver_id');
-    }
-
-    public function addresses()
-    {
-        return $this->hasMany('App\GiverAddress', 'giver_id');
-    }
-
+    /**
+     * Returns the donations
+     */
     public function donations()
     {
-        return $this->hasMany('App\Donation', 'giver_id');
+        return $this->hasMany('App\Donation', 'user_id', 'user_id');
     }
 
-    public function unsubscribeRequest()
+    /**
+     * Returns the frequent products
+     */
+    public function frequent_products()
     {
-        return $this->hasOne('App\UnsubscribeReques');
+        return $this->hasOne('App\FrequentProducts', 'user_id', 'user_id');
     }
-
 }
