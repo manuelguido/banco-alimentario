@@ -14,9 +14,8 @@ class CreateOrganizationsTable extends Migration
     public function up()
     {
         Schema::create('organizations', function (Blueprint $table) {
-            $table->increments('organization_id');
-            $table->unsignedInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedInteger('user_id')->unique();
+            $table->foreign('user_id')->references('user_id')->on('institutions')->onDelete('cascade');
         });
     }
 

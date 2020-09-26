@@ -14,7 +14,7 @@ class AddTypeIdToCategoriesTable extends Migration
     public function up()
     {
         Schema::table('categories', function (Blueprint $table) {
-            $table->unsignedSmallInteger('type_id')->unique();
+            $table->unsignedSmallInteger('type_id');
             $table->foreign('type_id')->references('type_id')->on('types');
         });
     }

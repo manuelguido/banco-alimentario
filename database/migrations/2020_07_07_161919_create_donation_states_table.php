@@ -14,8 +14,8 @@ class CreateDonationStatesTable extends Migration
     public function up()
     {
         Schema::create('donation_states', function (Blueprint $table) {
-            $table->tinyIncrements('donation_status_id');
-            $table->string('status', 40);
+            $table->tinyIncrements('donation_state_id');
+            $table->string('state', 40);
         });
     }
 

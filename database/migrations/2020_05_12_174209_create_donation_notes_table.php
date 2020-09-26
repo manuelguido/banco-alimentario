@@ -14,9 +14,8 @@ class CreateDonationNotesTable extends Migration
     public function up()
     {
         Schema::create('donation_notes', function (Blueprint $table) {
-            $table->increments('id');
-            $table->unsignedInteger('donation_id');
-            $table->foreign('donation_id')->references('id')->on('donations');
+            $table->unsignedBigInteger('donation_id')->unique();
+            $table->foreign('donation_id')->references('donation_id')->on('donations')->onDelete('cascade');
             $table->string('note');
         });
     }

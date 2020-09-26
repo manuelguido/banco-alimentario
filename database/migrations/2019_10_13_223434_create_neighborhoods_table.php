@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 class CreateNeighborhoodsTable extends Migration
 {
@@ -14,8 +14,8 @@ class CreateNeighborhoodsTable extends Migration
     public function up()
     {
         Schema::create('neighborhoods', function (Blueprint $table) {
-            $table->smallIncrements('id');
-            $table->string('name', 140);
+            $table->smallIncrements('neighborhood_id');
+            $table->string('neighborhood', 60);
         });
     }
 

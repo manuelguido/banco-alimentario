@@ -17,14 +17,14 @@ class CreateAddressesTable extends Migration
             $table->bigIncrements('address_id');
             $table->string('street', 50);
             $table->integer('number');
-            $table->tinyInteger('floor');
-            $table->string('apt', 4);
+            $table->tinyInteger('floor')->nullabe();
+            $table->string('apt', 4)->nullabe();
             // Neighborhood key
-            $table->unsignedInteger('neighborhood_id')->unique();
+            $table->unsignedSmallInteger('neighborhood_id');
             $table->foreign('neighborhood_id')->references('neighborhood_id')->on('neighborhoods');
             // Institution key
-            $table->unsignedInteger('institution_id')->unique();
-            $table->foreign('institution_id')->references('institution_id')->on('institutions');
+            $table->unsignedInteger('user_id');
+            $table->foreign('user_id')->references('user_id')->on('institutions');
         });
     }
 

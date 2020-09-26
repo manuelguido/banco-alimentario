@@ -14,12 +14,11 @@ class CreateDonationRejectionsTable extends Migration
     public function up()
     {
         Schema::create('donation_rejections', function (Blueprint $table) {
-            $table->increments('id');
-            $table->unsignedInteger('donation_id');
-            $table->foreign('donation_id')->references('id')->on('donations');
-            $table->text('reason');
-            $table->unsignedInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedBigInteger('donation_id')->unique();
+            $table->foreign('donation_id')->references('donation_id')->on('donations')->onDelete('cascade');
+            $table->string('reason');
+            $table->unsignedInteger('rejecter_id');
+            $table->foreign('rejecter_id')->references('user_id')->on('users');
         });
     }
 

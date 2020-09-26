@@ -14,7 +14,9 @@ class CreateInstitutionsTable extends Migration
     public function up()
     {
         Schema::create('institutions', function (Blueprint $table) {
-            $table->increments('institution_id');
+            // Primary key
+            $table->unsignedInteger('user_id')->unique();
+            $table->foreign('user_id')->references('user_id')->on('users')->onDelete('cascade');
             $table->string('institution', 60);
             $table->integer('cuit');
             $table->string('phone', 40);

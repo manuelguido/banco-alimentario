@@ -15,9 +15,9 @@ class CreateItemsTable extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->unsignedBigInteger('product_id');
-            $table->foreign('product_id')->references('product_id')->on('products');
+            $table->foreign('product_id')->references('product_id')->on('products')->onDelete('cascade');
             $table->unsignedBigInteger('donation_id');
-            $table->foreign('donation_id')->references('donation_id')->on('donations');
+            $table->foreign('donation_id')->references('donation_id')->on('donations')->onDelete('cascade');
             $table->smallInteger('amount');
         });
     }

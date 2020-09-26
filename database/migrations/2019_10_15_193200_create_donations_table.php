@@ -15,10 +15,11 @@ class CreateDonationsTable extends Migration
     {
         Schema::create('donations', function (Blueprint $table) {
             $table->bigIncrements('donation_id');
-            $table->unsignedInteger('giver_id');
-            $table->foreign('giver_id')->references('giver_id')->on('givers');
+            $table->unsignedInteger('user_id')->unique();
+            $table->foreign('user_id')->references('user_id')->on('givers')->onDelete('cascade');
             $table->unsignedInteger('user_responsable_id');
             $table->foreign('user_responsable_id')->references('user_id')->on('users');
+            $table->string('code', 80);
         });
     }
 

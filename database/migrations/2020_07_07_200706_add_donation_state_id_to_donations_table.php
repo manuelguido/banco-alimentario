@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddStatusIdToUnsubscribeRequestsTable extends Migration
+class AddDonationStateIdToDonationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class AddStatusIdToUnsubscribeRequestsTable extends Migration
      */
     public function up()
     {
-        Schema::table('unsubscribe_requests', function (Blueprint $table) {
-            $table->unsignedTinyInteger('unsubscribe_status_id');
-            $table->foreign('unsubscribe_status_id')->references('unsubscribe_status_id')->on('unsubscribe_states');
+        Schema::table('donations', function (Blueprint $table) {
+            $table->unsignedTinyInteger('donation_state_id');
+            $table->foreign('donation_state_id')->references('donation_state_id')->on('donation_states');
         });
     }
 
@@ -26,7 +26,7 @@ class AddStatusIdToUnsubscribeRequestsTable extends Migration
      */
     public function down()
     {
-        Schema::table('unsubscribe_requests', function (Blueprint $table) {
+        Schema::table('donations', function (Blueprint $table) {
             //
         });
     }

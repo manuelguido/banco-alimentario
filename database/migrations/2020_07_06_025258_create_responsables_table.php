@@ -23,8 +23,8 @@ class CreateResponsablesTable extends Migration
             $table->foreign('document_type_id')->references('document_type_id')->on('document_types');
             $table->integer('document_number');
             // Adds institution to responsables
-            $table->unsignedTinyInteger('institution_id');
-            $table->foreign('institution_id')->references('institution_id')->on('institutions');
+            $table->unsignedInteger('user_id');
+            $table->foreign('user_id')->references('user_id')->on('institutions');
         });
     }
 

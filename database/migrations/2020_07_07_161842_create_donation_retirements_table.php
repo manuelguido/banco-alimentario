@@ -16,7 +16,7 @@ class CreateDonationRetirementsTable extends Migration
         Schema::create('donation_retirements', function (Blueprint $table) {
             $table->unsignedBigInteger('donation_id');
             $table->foreign('donation_id')->references('donation_id')->on('donations')->onDelete('cascade');
-            $table->timestamps('retirement');
+            $table->dateTime('retired_at');
         });
     }
 
