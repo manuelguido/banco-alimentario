@@ -1,29 +1,29 @@
 <template>
-  <mdb-navbar class="navigation fixed-top py-2 uns" color="none" light>
-    <router-link class="ls-brand" to="/">
+  <mdb-navbar class="navigation py-2 uns" color="none" light>
+    <a class="ls-brand" href="/">
       <img src="../../assets/logo.jpg" class="donate-image uns lazyload">
-    </router-link>
+    </a>
     <mdb-navbar-toggler>
       <mdb-navbar-nav right>
         <!-- Links -->
         <mdb-dropdown tag="li" class="nav-item">
           <mdb-dropdown-toggle class="nav-link" tag="a" navLink slot="toggle" waves-fixed>Asociate</mdb-dropdown-toggle>
           <mdb-dropdown-menu>
-            <router-link class="dropdown-item" to="/register_giver">Como donante</router-link>
-            <router-link class="dropdown-item" to="/register_volunteer">Como voluntario</router-link>
+            <a class="dropdown-item" href="/register/giver">Como donante</a>
+            <a class="dropdown-item" href="/register/volunteer">Como voluntario</a>
           </mdb-dropdown-menu>
         </mdb-dropdown>
-        <router-link
+        <a
           v-for="link in links" :key="link.name"
-          :to="link.url"
+          :href="link.url"
           class="nav-item"
         ><span class="nav-link">{{link.name}}</span>
-        </router-link>
+        </a>
         <!-- Login -->
-        <router-link to="/login" class="btn btn-sm btn-login ls-s-rounded m-0 px-2">
+        <a href="/login" class="btn btn-sm btn-login ls-s-rounded m-0 px-2">
           <i class="fas fa-sign-in-alt m-0"></i>
           <span class="ml-3 web-hide">Iniciar sesión</span>
-        </router-link>
+        </a>
       </mdb-navbar-nav>
     </mdb-navbar-toggler>
   </mdb-navbar>
@@ -66,7 +66,7 @@
           },
           {
             name: 'Contácto',
-            url: '/'
+            url: '/contact'
           }
         ]
       }
