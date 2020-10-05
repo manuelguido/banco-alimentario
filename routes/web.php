@@ -1,14 +1,14 @@
 <?php
 
 // SPA
-Route::get('/{any?}', 'SpaController@index')->name('home');
+// Route::get('/{any?}', 'SpaController@index')->name('home');
 
-// /*--------------------------------------------------------------
-//     Vistas publicas
-// --------------------------------------------------------------*/
-// Route::get('/', 'HomeController@index')->name('home');
-// Route::get('/home', 'HomeController@index')->name('/home');
-// Route::get('/contacto', 'HomeController@contactView')->name('contacto');
+/*--------------------------------------------------------------
+  Public views
+--------------------------------------------------------------*/
+Route::get('/', 'HomeController@index')->name('welcome');
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/contact', 'ContactController@index')->name('contacto');
 
 // //New users url
 // Route::get('/register/{name}', 'PublicController@registerView')->where('name', '[A-Za-z]+')->name('register');
