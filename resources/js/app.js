@@ -18,7 +18,9 @@ import 'vue-waves-effect/dist/vueWavesEffect.css';
 Vue.use(Waves);
 
 /*--------------------------------------------------------------
+
     Components
+
 --------------------------------------------------------------*/
 // Navigation
 Vue.component('navbar', require('./components/navigation/Navbar.vue').default);
@@ -29,6 +31,15 @@ Vue.component('h-title', require('./components/title/HTitle.vue').default);
 // Forms
 Vue.component('form-label', require('./components/forms/Label.vue').default);
 
+
+
+/*--------------------------------------------------------------
+    Auth components
+--------------------------------------------------------------*/
+// Navigation
+Vue.component('login-card', require('./components/auth/LoginCard.vue').default);
+// Submit button
+Vue.component('submit-button', require('./components/buttons/Submit.vue').default);
 
 const app = new Vue({
     el: '#app',

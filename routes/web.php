@@ -98,3 +98,7 @@ Route::get('/register/volunteer', 'Auth\RegisterController@newVolunteer')->where
 // Route::get('/delete_user/{id}', 'AdminController@deleteUser');
 // Route::post('/create_employee', 'AdminController@createEmployee');
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

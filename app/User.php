@@ -10,11 +10,10 @@ use Illuminate\Notifications\Notifiable;
 use DB;
 use App\Role;
 
-use Laravel\Passport\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, Notifiable, SoftDeletes;
+    use Notifiable, SoftDeletes;
 
     /**
     * Attributes
