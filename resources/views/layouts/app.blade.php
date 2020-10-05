@@ -25,6 +25,6 @@
             @yield('content')
         </div>
         {{-- App --}}
-        <script src="{{ asset('js/app.min.js', true) }}"></script>
+        <script src="{{ asset('js/app.min.js') }}"></script>
     </body>
 </html>
