@@ -1,6 +1,10 @@
 @extends('layouts.app')
-@include('components.header')
+
+@section('title', 'Contácto')
+
 @section('content')
+<navbar></navbar>
+
 <!-- Container -->
 <div class="container-fluid">
     <!-- Row -->

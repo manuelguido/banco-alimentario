@@ -3,6 +3,7 @@ require('./bootstrap');
 import 'bootstrap-css-only/css/bootstrap.min.css';
 import 'mdbvue/lib/css/mdb.min.css';
 import '../css/lightseed.css'
+import '../css/main.css'
 
 window.Vue = require('vue');
 

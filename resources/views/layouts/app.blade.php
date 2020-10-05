@@ -8,12 +8,8 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>@yield('title')</title>
         
-        <!-- Styles & Icons -->
-        {{-- <script defer src="{{ asset('fonts/fontawesome/js/all.min.js') }}"></script> --}}
-        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-        <link href="{{ asset('css/main.css') }}" rel="stylesheet">
-        {{-- <script defer src="{{ asset('fonts/fontawesome/js/all.min.js') }}"></script> --}}
-        
+        <!-- Fontawesome -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
         <!-- Custom Header -->
         @yield('header')
     </head>
@@ -21,6 +17,7 @@
         <div id="app">
             @yield('content')
         </div>
+        {{-- App --}}
         <script src="{{ asset('js/app.min.js') }}"></script>
     </body>
 </html>
