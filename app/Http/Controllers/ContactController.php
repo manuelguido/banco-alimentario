@@ -6,10 +6,10 @@ use Illuminate\Http\Request;
 
 class ContactController extends Controller
 {
-    /*
-    * Returns contact view
-    *
-    */
+    /**
+     * Return contact view
+     * 
+     */
     public function index()
     {
         return view('contact');

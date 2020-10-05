@@ -7,10 +7,10 @@ import '../css/lightseed.css'
 window.Vue = require('vue');
 
 // Vue, mainapp + router
-import Vue from 'vue'
-import router from './router'
-import store from './store'
-import App from './views/App'
+// import Vue from 'vue'
+// import router from './router'
+// import store from './store'
+// import App from './views/App'
 import Waves from 'vue-waves-effect';
 import 'vue-waves-effect/dist/vueWavesEffect.css';
 
@@ -31,7 +31,4 @@ Vue.component('form-label', require('./components/forms/Label.vue').default);
 
 const app = new Vue({
     el: '#app',
-    components: { App },
-    router,
-    store
 });
