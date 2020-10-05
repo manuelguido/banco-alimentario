@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class ContactController extends Controller
 {
     /**
-     * Return contact view
+     * Show contact page
      * 
      */
     public function index()

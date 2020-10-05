@@ -3,12 +3,37 @@
 // SPA
 // Route::get('/{any?}', 'SpaController@index')->name('home');
 
-/*--------------------------------------------------------------
-  Public views
---------------------------------------------------------------*/
+/**--------------------------------------------------------------
+ * 
+ * Public views
+ *  
+ --------------------------------------------------------------*/
+// Home page
 Route::get('/', 'HomeController@index')->name('welcome');
 Route::get('/home', 'HomeController@index')->name('home');
+// Contact page
 Route::get('/contact', 'ContactController@index')->name('contacto');
+
+/**--------------------------------------------------------------
+ * 
+ * Auth views
+ *  
+ --------------------------------------------------------------*/
+ Auth::routes([
+  'verify' => true,
+  'register' => false
+]);
+
+// New giver view
+Route::get('/register/giver', 'Auth\RegisterController@newGiver')->where('name', '[A-Za-z]+')->name('register.giver');
+// New volunteer view
+Route::get('/register/volunteer', 'Auth\RegisterController@newVolunteer')->where('name', '[A-Za-z]+')->name('register.volunteer');
+
+
+
+
+
+
 
 // //New users url
 // Route::get('/register/{name}', 'PublicController@registerView')->where('name', '[A-Za-z]+')->name('register');
