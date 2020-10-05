@@ -16,6 +16,9 @@
         {{-- Fontawesome --}}
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
 
+        {{-- Fav Icon --}}
+        <link rel="icon" href="{{ asset('img/artwork/favicon.png') }}">
+
         {{-- Custom Header --}}
         @yield('header')
     </head>
