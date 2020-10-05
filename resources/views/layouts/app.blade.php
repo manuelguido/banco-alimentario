@@ -1,23 +1,30 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
+        {{-- Charset --}}
         <meta charset="utf-8">
+
+        {{-- Viewport --}}
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        
-        <!-- CSRF Token -->
+    
+        {{-- CSRF Token --}}
         <meta name="csrf-token" content="{{ csrf_token() }}">
+
+        {{-- Title --}}
         <title>@yield('title')</title>
-        
-        <!-- Fontawesome -->
+
+        {{-- Fontawesome --}}
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
-        <!-- Custom Header -->
+
+        {{-- Custom Header --}}
         @yield('header')
     </head>
     <body>
+        {{-- App --}}
         <div id="app">
             @yield('content')
         </div>
         {{-- App --}}
-        <script src="{{ asset('js/app.min.js') }}"></script>
+        <script src="{{ asset('js/app.min.js', true) }}"></script>
     </body>
 </html>
