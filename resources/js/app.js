@@ -38,6 +38,14 @@ Vue.component('form-label', require('./components/forms/Label.vue').default);
 
 
 /*--------------------------------------------------------------
+    Home page
+--------------------------------------------------------------*/
+// Forms
+Vue.component('home-content', require('./components/pages/home/Content.vue').default);
+
+
+
+/*--------------------------------------------------------------
     Auth components
 --------------------------------------------------------------*/
 // Navigation
