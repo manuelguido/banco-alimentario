@@ -3,7 +3,9 @@
 @section('title', 'Banco alimentario: Inicio')
 
 @section('content')
-    <navbar></navbar>
+    <navbar
+        @auth auth @endauth
+    ></navbar>
 
     Inicio de banco alimentario
 @endsection

@@ -15,6 +15,10 @@ window.Vue = require('vue');
 import Waves from 'vue-waves-effect';
 import 'vue-waves-effect/dist/vueWavesEffect.css';
 
+// Mixins
+import assetMixin from './mixins/assetMixin'
+Vue.mixin(assetMixin)
+
 Vue.use(Waves);
 
 /*--------------------------------------------------------------

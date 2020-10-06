@@ -16,15 +16,3 @@ body {
 /*--------------------------------------------------------------
   Custom mdvue classes
 --------------------------------------------------------------*/
-.card {
-  border-radius: 8px !important;
-}
-.card-header {
-  background: #fff;
-  border-top-left-radius: 8px !important;
-  border-top-right-radius: 8px !important;
-}
-.card-body {
-  border-bottom-left-radius: 8px !important;
-  border-bottom-right-radius: 8px !important;
-}

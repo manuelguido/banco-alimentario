@@ -4,7 +4,7 @@ const assetMixin = {
 	data () {
 		return {
 			dev_path: 'http://127.0.0.1:8000/',
-			prod_path: 'http://127.0.0.1:8000/', // Cambiar ruta cuando se haga el deploy
+			prod_path: 'https://banco-alimentario.herokuapp.com/public/',
 		}
 	},
 	methods: {
@@ -15,6 +15,9 @@ const assetMixin = {
 			else {
 				return this.dev_path;
 			}
+		},
+		image_path () {
+			return this.asset_path() + 'img/'
 		}
 	},
 }
