@@ -7,8 +7,9 @@ use Illuminate\Http\Request;
 class ContactController extends Controller
 {
     /**
-     * Show contact page
-     * 
+     * Show the application contact page.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
     {
