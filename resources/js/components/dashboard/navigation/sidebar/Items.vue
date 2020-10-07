@@ -59,7 +59,7 @@ export default {
 }
 .item.router-link-active .icon,
 .item.router-link-exact-active .icon {
-  color: var(--primary);
+  color: var(--color-a);
 }
 
 .item .icon {
