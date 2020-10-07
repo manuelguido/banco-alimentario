@@ -29,10 +29,16 @@ Route::get('/register/giver', 'Auth\RegisterController@newGiver')->where('name',
 // New volunteer view
 Route::get('/register/volunteer', 'Auth\RegisterController@newVolunteer')->where('name', '[A-Za-z]+')->name('register.volunteer');
 
-
-
-
-
+/**--------------------------------------------------------------
+ * 
+ * User views
+ *  
+ --------------------------------------------------------------*/
+// Dashboard
+Route::get('/dashboard', 'UserController@dashboard')->name('dashboard');
+Route::get('dashboard/{any?}', 'UserController@dashboard')->name('dashboard');
+// Profile
+Route::get('/profile', 'UserController@profile')->name('profile');
 
 
 // //New users url
