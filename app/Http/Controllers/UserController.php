@@ -22,6 +22,34 @@ class UserController extends Controller
         $this->middleware('auth');
     }
 
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function dashboard()
+    {
+        return view('dashboard.index');
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function profile()
+    {
+        return view('dashboard.profile');
+    }
+
+
+
+
+
+
+
+
+
     public function showProfile() {
         $user = auth()->user();
         $giver = DB::table('givers')->where('user_id', $user->id)->get();
