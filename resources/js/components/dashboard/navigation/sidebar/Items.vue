@@ -52,9 +52,9 @@ export default {
 
 .item.router-link-active,
 .item.router-link-exact-active {
-  background: var(--black-alpha-03);
-  color: var(--primary);
-  border-left: 4px solid var(--primary);
+  background: rgba(0,0,0,.07);
+  color: var(--color-a);
+  border-left: 4px solid var(--color-a);
   /* box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.125); */
 }
 .item.router-link-active .icon,

@@ -11,6 +11,11 @@ import 'vue-waves-effect/dist/vueWavesEffect.css';
 
 window.Vue = require('vue');
 
+// Vue, mainapp + router
+import Vue from 'vue';
+import App from './views/App';
+import router from './router';
+import store from './store';
 
 // Mixins
 import assetMixin from './mixins/assetMixin'
@@ -42,11 +47,23 @@ Vue.component('home-content', require('./components/pages/home/Content.vue').def
 Vue.component('login-card', require('./components/auth/LoginCard.vue').default);
 // Submit button
 Vue.component('submit-button', require('./components/buttons/Submit.vue').default);
+// Submit button
+Vue.component('account-button', require('./components/navigation/AccountButton.vue').default);
 
+/**
+ * Dashboard components
+ */
+// Navigation
+Vue.component('dashboard-navigation', require('./components/dashboard/navigation/Navigation.vue').default);
+// Navigation
+Vue.component('dashboard', require('./views/layouts/Dashboard.vue').default);
 
 /**
  * Application
  */
-const app = new Vue({
+new Vue({
     el: '#app',
-});
+    components: { App },
+    router,
+    store
+  }).$mount('#app')

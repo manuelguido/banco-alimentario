@@ -1,8 +1,8 @@
 <template>
   <!-- Col -->
-  <div class="col-12 col-lg-9 col-xl-8 pt-5">
+  <div class="col-12 col-lg-9 col-xl-8 pt-lg-5 mt-5">
     <!-- Card -->
-    <div class="card py-4 py-lg-5">
+    <div class="card login-card py-4 py-lg-5">
       <!-- Card body -->
       <div class="card-body p-lg-5">
         <!-- Row -->
@@ -38,13 +38,6 @@
 </template>
 
 <style scoped>
-.cont {
-  min-height: 100vh;
-  align-content: center;
-}
-.cont-row {
-  min-height: 90vh;
-}
 .donate-image {
     width: 100%;
     margin: auto;
@@ -52,6 +45,12 @@
 @media (min-width: 992px) {
   .bl-grey {
     border-left: 1px solid #f1f3f5;
+  }
+}
+
+@media (max-width: 992px) {
+  .login-card {
+    box-shadow: none !important;
   }
 }
 </style>

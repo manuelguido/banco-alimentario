@@ -1,32 +1,18 @@
 <template>
-  <mdb-navbar id="dashboard-navbar" color="white" light ref="nav" class="navbar dashboard-navbar shadow-none py-3 py-lg-1">
+  <mdb-navbar id="dashboard-navbar" color="white" light class="dashboard-navbar shadow-none py-3 py-lg-2 py-xl-2">
     <!-- Brand -->
-		<mdb-navbar-brand class="brand">
-			<span class="w-600">{{navbar_title}}</span>
-      <span class="w-400">Dashboard</span>
-    </mdb-navbar-brand>
+    <a href="/" class="navbar-brand ls-brand">
+      <img src="../../../../assets/logo.jpg" class="uns lazyload">
+    </a>
 		<!-- /.Brand -->
     <mdb-navbar-toggler>
-			<form class="search-form mx-auto my-3 my-lg-1">
-				<div class="input-group">
-					<input type="text" class="form-control" v-model="input_search" placeholder="Buscar en el panel" aria-label="Buscar" aria-describedby="search-addon">
-					<div class="input-group-append">
-						<span class="input-group-text" id="search-addon"><i class="fas fa-search"></i></span>
-					</div>
-				</div>
-			</form>
 			<mdb-navbar-nav right>
 				<span class="web-hide">
 					<!-- Items -->
     			<items :routes=routes></items>
 				</span>
-				<mdb-dropdown tag="li" class="nav-item mobile-hide">
-          <mdb-dropdown-toggle tag="a" navLink class="btn btn-dropdown" slot="toggle" waves-fixed>Cuenta</mdb-dropdown-toggle>
-          <mdb-dropdown-menu>
-						<mdb-dropdown-item to="/dashboard"><i class="fad fa-tachometer-fast mr-3 black-alpha-40"></i>Panel</mdb-dropdown-item>
-            <mdb-dropdown-item to="/logout"><i class="fad fa-sign-out mr-3 black-alpha-40"></i>Cerrar sesión</mdb-dropdown-item>
-          </mdb-dropdown-menu>
-        </mdb-dropdown>
+				<!-- Account button -->
+				<account-button></account-button>
       </mdb-navbar-nav>
     </mdb-navbar-toggler>
   </mdb-navbar>
@@ -52,10 +38,6 @@
 			items
 		},
 		props: {
-			navbar_title: {
-				type: String,
-				default: 'COVID',
-			},
 			routes: Array
 		},
 		data () {
@@ -126,70 +108,33 @@
 </style>
 
 <style scoped>
-.navbar {
-	z-index: 1080 !important;
+.dashboard-navbar {
+	z-index: 1040 !important;
+	border-bottom: 1px solid #eee;
 }
 
-@media (min-width: 1200px) {
-	.navbar {
-		padding-right: 120px;
-	}
-}
-
-.brand,
-.brand * {
-	color: var(--primary) !important;
-}
-
-/* Searchbar */
-.search-form {
-	background: var(--black-alpha-03);
-	border-radius: 8px;
-	border: 0 none;
-	padding: 10px;
-}
-@media (min-width: 992px) {
-	.search-form {
-		width: 50%;
-	}
-}
 @media (max-width: 992px) {
-	.search-form {
-		width: 100%;
+	.dashboard-navbar {
+		position: fixed !important;
+		width: 100vw;
+		box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 	}
 }
 
 
-.search-form input {
-	width: 100%;
-	height: 100%;
+/* Brand */
+.ls-brand img {
+  height: 60px;
+}
+.ls-brand:hover {
+  opacity: .8 !important;
 }
 
-.search-form input,
-.search-form input:focus {
-	color: var(--white-a);
-}
-
-.search-form input:focus,
-.search-form * {
-	box-shadow: none;
-	background: none;
-	border: 0 none;
-	outline: none ;
-}
 
 /* Buttons */
-.btn-register {
-	background: var(--primary) !important;
-	color: #fff !important;
-}
-.btn-login {
-	background: var(--primary-light) !important;
-	border: 1px solid var(--primary) !important;
-	color: var(--primary) !important;
-}
 .btn-dropdown {
-	background: var(--black-alpha-06);
+	background: var(--black-alpha-03);
 	box-shadow: none !important;
+	border-radius: 50px !important;
 }
 </style>

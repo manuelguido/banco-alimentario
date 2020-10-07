@@ -2,12 +2,8 @@
   <!-- Sidenav -->
   <div class="sidenav mobile-hide uns">
     <!--Header-->
-    <div class="navbar shadow-none py-3">
-      <div class="navbar-brand">
-        <span class="w-600">{{sidebar_title}}</span>
-			  <span class="w-300">Dashboard</span>
-      </div>
-    </div>
+    <!-- <user-data :user="user"></user-data> -->
+
     <!-- Items -->
     <items :routes=routes></items>
     <!-- /.Items -->
@@ -17,18 +13,21 @@
 
 <script>
 import items from './Items';
+import userData from './Userdata';
 
 export default {
   name: 'sideNav',
   props: {
-    routes: Array
+    routes: Array,
+    user: Object
   },
   components: {
-    'items': items
+    'items': items,
+    'user-data': userData
   },
   data () {
     return {
-      sidebar_title: 'COVID'
+      sidebar_title: 'Banco alimentario'
     }
   }
 }
@@ -45,8 +44,9 @@ export default {
     width: 280px;
     left: 0;
     top: 0;
-    z-index: 1090;
-    /* padding-top: 150px; */
+    z-index: 1030;
+    padding-top: 108px;
+    border-right: 1px solid #eee !important;
   }
 }
 @media (max-width: 992px) {
@@ -59,5 +59,4 @@ export default {
 .navbar-brand * {
   color: var(--primary) !important;
 }
-
 </style>

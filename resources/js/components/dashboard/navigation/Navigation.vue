@@ -34,24 +34,14 @@ export default {
 			routes: [
 				{
 					url: '/dashboard/home',
-					icon: 'fad fa-tachometer-fast',
+					icon: 'fas fa-home',
 					name: 'Inicio',
-        },
-				{
-					url: '/dashboard/medics',
-					icon: 'fad fa-user-nurse',
-					name: 'Médicos',
 				},
 				{
-					url: '/dashboard/patients',
-					icon: 'fad fa-user-alt',
-					name: 'Pacientes',
-				},
-				{
-					url: '/dashboard/reports',
-					icon: 'fad fa-chart-pie',
-					name: 'Reportes',
-				},
+					url: '/dashboard/donations',
+					icon: 'fas fa-box',
+					name: 'Donaciones',
+        }
 			]
 		}
 	}  

@@ -2,28 +2,26 @@
 import dashboard from '../views/layouts/Dashboard'
 // Home
 import home from '.././views/dashboard/Home'
+// Home
+import donations from '.././views/dashboard/Donations'
 
 const routes = [
-  { 
-    path: '/admin',
-    redirect: '/dashboard/home', 
-  },
   {
     path: '/dashboard',
     name: 'dashboard',
-    component: dashboard,
-    redirect: '/dashboard/home',
-    meta: {
-      requiresAuth: true,
-    },
-    children: [
-      {
-        path: '/dashboard/home',
-        name: 'dashboardHome',
-        component: home
-      }
-    ]
+    component: home,
+    redirect: '/dashboard/home' 
   },
+  {
+    path: '/dashboard/home',
+    name: 'dashboardHome',
+    component: home
+  },
+  {
+    path: '/dashboard/donations',
+    name: 'dashboardDonations',
+    component: donations
+  }
 ]
 
 export default routes

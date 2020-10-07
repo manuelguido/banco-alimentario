@@ -1,5 +1,10 @@
 <template>
-  <button type="submit" class="btn btn-primary mx-0">
+  <button
+    type="submit"
+    :class="[
+      'btn btn-primary mx-0',
+      'btn-block'
+      ]">
     {{text}}
   </button>
 </template>

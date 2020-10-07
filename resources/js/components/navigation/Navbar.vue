@@ -1,7 +1,7 @@
 <template>
   <mdb-navbar class="navigation py-2 uns" color="none" light>
     <a class="ls-brand" href="/">
-      <img src="../../assets/logo.jpg" class="donate-image uns lazyload">
+      <img src="../../assets/logo.jpg" class="uns lazyload">
     </a>
     <mdb-navbar-toggler>
       <mdb-navbar-nav right>
@@ -20,16 +20,7 @@
         ><span class="nav-link">{{link.name}}</span>
         </a>
         <!-- Login -->
-        <mdb-dropdown v-if="auth" tag="li" class="nav-item mobile-hide uns" dropleft>
-          <mdb-dropdown-toggle tag="a" navLink class="btn btn-dropdown" slot="toggle" waves-fixed><i class="fas fa-user-alt black-alpha-50 mr-2"></i>Cuenta</mdb-dropdown-toggle>
-          <mdb-dropdown-menu>
-						<h6 class="dropdown-header text-left pl-2 black-alpha-60">Cuenta</h6>
-						<mdb-dropdown-item href="/profile">Perfil</mdb-dropdown-item>
-						<mdb-dropdown-item href="/dashboard">Dashboard</mdb-dropdown-item>
-      			<div class="dropdown-divider m-0 p-0"></div>
-            <mdb-dropdown-item href="/logout">Cerrar sesión</mdb-dropdown-item>
-          </mdb-dropdown-menu>
-        </mdb-dropdown>
+        <account-button v-if="auth"></account-button>
         <a v-else href="/login" class="btn btn-sm btn-login ls-s-rounded m-0 px-2">
           <i class="fas fa-sign-in-alt m-0"></i>
           <span class="ml-3 web-hide">Iniciar sesión</span>
@@ -154,15 +145,5 @@
   .btn-login i {
     font-size: 12px;
   }
-}
-
-
-
-.btn-dropdown {
-  background: rgba(0,0,0,0.06);
-  border-radius: 8px !important;
-	box-shadow: none !important;
-  color: rgba(0,0,0,0.40);
-  
 }
 </style>
