@@ -1,17 +1,3 @@
-
-.h1-responsive,
-.h2-responsive,
-.h3-responsive,
-.h4-responsive,
-.h5-responsive,
-.h6-responsive {
-  font-family: 'Bebas Neue', cursive;
-  letter-spacing: 0.07em;
-  color: (--black-a);
-}
-
-
-
 @media (max-width: 331.98px) {
   .h1-responsive {
     font-size: 1.55em;
@@ -29,7 +15,7 @@
     font-size: .8em;
   }
   .h6-responsive {
-    font-size: .6em;
+    font-size: 1em;
   }
 }
 @media (min-width: 332px) and (max-width: 575.98px) {
@@ -49,7 +35,7 @@
     font-size: .95em;
   }
   .h6-responsive {
-    font-size: .8em;
+    font-size: 1em;
   }
 }
 
@@ -67,10 +53,10 @@
     font-size: 1.5em;
   }
   .h5-responsive {
-    font-size: 1.25em;
+    font-size: 1.2em;
   }
   .h6-responsive {
-    font-size: 1.125em;
+    font-size: 1.1em;
   }
 }
 
@@ -88,10 +74,10 @@
     font-size: 2em;
   }
   .h5-responsive {
-    font-size: 1.75em;
+    font-size: 1.25em;
   }
   .h6-responsive {
-    font-size: 1.25em;
+    font-size: 1.15em;
   }
 }
 
@@ -109,10 +95,10 @@
     font-size: 2.25em;
   }
   .h5-responsive {
-    font-size: 2em;
+    font-size: 1.4em;
   }
   .h6-responsive {
-    font-size: 1.75em;
+    font-size: 1.25em;
   }
 }
 
@@ -130,9 +116,9 @@
     font-size: 2.4em;
   }
   .h5-responsive {
-    font-size: 2.25em;
+    font-size: 1.6em;
   }
   .h6-responsive {
-    font-size: 1.75em;
+    font-size: 1.3em;
   }
 }

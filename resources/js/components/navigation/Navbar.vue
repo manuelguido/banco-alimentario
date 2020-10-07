@@ -93,9 +93,21 @@
 <style scoped>
 /* Navbar */
 .navigation {
-  background-color: var(--white-a);
-  box-shadow: 0 1px .125em 0 rgba(0,0,0,.15) !important;
+  background: #fff;
 }
+@media (min-width: 992px) {
+  .navigation {
+    box-shadow: none !important;
+    border-bottom: 1px solid #f7f7f7;
+  }
+}
+@media (max-width: 992px) {
+  .navigation {
+    box-shadow: 0 1px .125em 0 rgba(0,0,0,.15) !important;
+  }  
+}
+
+
 .navigation, .navigation * {
   transition: 0s all !important;
 }
