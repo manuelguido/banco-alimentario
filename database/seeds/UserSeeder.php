@@ -33,6 +33,7 @@ class UserSeeder extends Seeder
             $user = new User;
             $user->email = $email;
             $user->password = Hash::make('password');
+            $user->api_token = Str::random(80);
             $user->is_active = true;
             $user->save();
             $user->set_role($role);
