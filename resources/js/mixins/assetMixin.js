@@ -3,7 +3,7 @@ const production = false;
 const assetMixin = {
 	data () {
 		return {
-			dev_path: 'http://127.0.0.1:8000/',
+			dev_path: 'http://127.0.0.1:8001/',
 			prod_path: 'https://banco-alimentario.herokuapp.com/public/',
 		}
 	},

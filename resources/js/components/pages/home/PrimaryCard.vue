@@ -1,19 +1,19 @@
 <template>
   <!-- Card -->
-  <div class="card primary-card mb-4">
+  <div class="card primary-card shadow-none mb-4">
     <!-- Tick -->
     <div class="tick"><i class="fas fa-check fa-lg"></i></div>
     <!-- Card body -->
     <div class="card-body py-lg-4 py-xl-5">
       <!-- Hashtag -->
-      <p class="hashtag mb-1">#{{content.hashtag}}</p>
+      <p class="hashtag mb-1">#{{ content.hashtag }}</p>
       <!-- Title -->
-      <h2 class="h5-responsive mb-2">{{content.title}}</h2>
+      <h2 class="h5-responsive mb-2">{{ content.title }}</h2>
       <!-- Text -->
-      <p class="mb-2">{{content.text}}</p>
+      <p class="mb-2">{{ content.text }}</p>
       <!-- Button -->
       <a v-if="content.button" class="btn btn-block btn-card mt-4" v-waves>
-        <span class="w600">{{content.button_text}}</span>
+        <span class="w600">{{ content.button_text }}</span>
         <i class="fas fa-chevron-right ml-3"></i>
       </a>
     </div>
@@ -26,16 +26,17 @@
 export default {
   props: {
     content: {
-      type: Object
-    }
-  }
-}
+      type: Object,
+      default: () => {},
+    },
+  },
+};
 </script>
 
 <style scoped>
 /* Card */
 .primary-card {
-  border-radius: 20px;
+  border-radius: 18px;
 }
 
 /* Hashtag */
@@ -48,12 +49,12 @@ export default {
   color: #00dcd3 !important;
   border-radius: 0;
   border: 2px solid #00dcd3;
-  padding: 1.5em .5em;
+  padding: 1.5em 0.5em;
   box-shadow: none !important;
 }
 
 /* On web */
-@media(min-width: 992px) {
+@media (min-width: 992px) {
   /* Card */
   .primary-card {
     height: 100%;
@@ -75,7 +76,7 @@ export default {
 }
 
 /* On mobile */
-@media(max-width: 992px) {
+@media (max-width: 992px) {
   /* Tick */
   .tick,
   .tick * {
