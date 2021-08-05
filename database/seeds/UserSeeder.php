@@ -23,104 +23,140 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
+        $globalPassword = 'password';
         /**
          * Creates new user
          *
-         * @return user_id
+         * @return App\User;
          */
-        function new_user($email, $role)
+        function createUser($email, $password, $role, $name = '')
         {
-            $user = new User;
-            $user->email = $email;
-            $user->password = Hash::make('password');
-            $user->api_token = Str::random(80);
-            $user->is_active = true;
-            $user->save();
-            $user->set_role($role);
-            return $user->user_id;
+            $data = ['email' => $email, 'password' => $password];
+            $user = User::createNew($data, true); // Crear el usuario
+            UserData::createNew($user->user_id, generateUserData($user->user_id)); // Crear la información de usuario
+            $user->setRole($role);
+            // Si es donante u organización: Crear datos de su institución y dirección
+            if ($role == Role::ROLE_GIVER || $role == Role::ROLE_ORGANIZATION) {
+                Institution::createNew($user->user_id, generateInstitution($user->user_id, $name));
+                Address::createNew($user->user_id, generateAddress($user->user_id));
+            }
         }
 
         /**
-         * Creates new user data
+         * Crear información aleatoria de un usuario
          *
-         * @return void
+         * @return Array
          */
-        function new_user_data($user_id)
+        function generateUserData($user_id)
         {
-            $user_data = new UserData;
-            $user_data->user_id = $user_id;
-            $user_data->name = Str::random(6);
-            $user_data->lastname = Str::random(6);
-            $user_data->phone = mt_rand(1000000, 99999999);
-            $user_data->document_type_id = 1;
-            $user_data->document_number = mt_rand(1000000, 99999999);
-            $user_data->save();
+            return [
+                'user_id' => $user_id,
+                'name' => Str::random(6),
+                'lastname' => Str::random(6),
+                'phone' => mt_rand(1000000, 99999999),
+                'document_type_id' => 1,
+                'document_number' => mt_rand(1000000, 99999999),
+            ];
         }
 
         /**
-         * Creates new user
+         * Crear información aleatoria de una dirección
          *
-         * @return user_id
+         * @return Array
          */
-        function new_institution($name, $email, $role)
+        function generateInstitution($user_id)
         {
-            // New User
-            $user_id = new_user($email, $role);
-
-            // New institution
-            $institution = new Institution;
-            $institution->institution = $name;
-            $institution->user_id = $user_id;
-            $institution->cuit = mt_rand(1000000, 99999999);
-            $institution->phone = mt_rand(1000000, 99999999);
-            $institution->save();
-
-            // New entity (Giver or Organization)
-            $entity = ($role == Role::ROLE_GIVER) ? new Giver : new Organization;
-            $entity->user_id = $user_id;
-            $entity->save();
-
-            // New responsable
-            $responsable = new Responsable;
-            $responsable->name = Str::random(6);
-            $responsable->lastname = Str::random(6);
-            $responsable->phone = mt_rand(1000000, 99999999);
-            $responsable->document_type_id = 1;
-            $responsable->document_number = mt_rand(1000000, 99999999);
-            $responsable->user_id = $user_id;
-            $responsable->save();
-
-            // New address
-            $address = new Address;
-            $address->street = Str::random(6);
-            $address->number = mt_rand(100, 10000);
-            $address->floor = mt_rand(1, 20);
-            $address->apt = Str::random(1);
-            $address->neighborhood_id = 1;
-            $address->user_id = $user_id;
-            $address->save();
+            return [
+                'user_id' => $user_id,
+                'institution' => Str::random(8),
+                'cuit' => mt_rand(10000000, 99999999),
+                'phone' => mt_rand(10000000, 99999999),
+            ];
         }
 
         /**
-         * New admin
+         * Crear información aleatoria de una dirección
+         *
+         * @return Array
          */
-        $user_id = new_user('admin@gmail.com', Role::ROLE_ADMIN);
-        new_user_data($user_id);
+        function generateAddress($user_id)
+        {
+            return [
+                'user_id' => $user_id,
+                'neighborhood_id' => 1,
+                'street' => Str::random(6),
+                'number' => mt_rand(100, 9999),
+                'floor' => strval(mt_rand(1, 12)),
+                'apt' => Str::random(1),
+            ];
+        }
+
+        // /**
+        //  * Creates new user
+        //  *
+        //  * @return user_id
+        //  */
+        // function new_institution($name, $email, $role)
+        // {
+        //     // New User
+        //     $user_id = new_user($email, $role);
+
+        //     // New institution
+        //     $institution = new Institution;
+        //     $institution->institution = $name;
+        //     $institution->user_id = $user_id;
+        //     $institution->cuit = mt_rand(1000000, 99999999);
+        //     $institution->phone = mt_rand(1000000, 99999999);
+        //     $institution->save();
+
+        //     // New entity (Giver or Organization)
+        //     $entity = ($role == Role::ROLE_GIVER) ? new Giver : new Organization;
+        //     $entity->user_id = $user_id;
+        //     $entity->save();
+
+        //     // New responsable
+        //     $responsable = new Responsable;
+        //     $responsable->name = Str::random(6);
+        //     $responsable->lastname = Str::random(6);
+        //     $responsable->phone = mt_rand(1000000, 99999999);
+        //     $responsable->document_type_id = 1;
+        //     $responsable->document_number = mt_rand(1000000, 99999999);
+        //     $responsable->user_id = $user_id;
+        //     $responsable->save();
+
+        //     // New address
+        //     $address = new Address;
+        //     $address->street = Str::random(6);
+        //     $address->number = mt_rand(100, 10000);
+        //     $address->floor = mt_rand(1, 20);
+        //     $address->apt = Str::random(1);
+        //     $address->neighborhood_id = 1;
+        //     $address->user_id = $user_id;
+        //     $address->save();
+        // }
 
         /**
-         * New employee
+         * Nuevo administrador
          */
-        $user_id = new_user('employee@gmail.com', Role::ROLE_EMPLOYEE);
-        new_user_data($user_id);
+        createUser('administrador@balimentario.com', $globalPassword, Role::ROLE_ADMIN);
 
         /**
-         * New giver
+         * Nuevo empleado
          */
-        new_institution('Walmart', 'giver@gmail.com', Role::ROLE_GIVER);
+        createUser('empleado@balimentario.com', $globalPassword, Role::ROLE_EMPLOYEE);
+
+        /**
+         * Nuevo donante
+         */
+        createUser('walmart@balimentario.com', $globalPassword, Role::ROLE_GIVER, 'Walmart');
+        createUser('carrefour@balimentario.com', $globalPassword, Role::ROLE_GIVER, 'Carrefour');
  
         /**
-         * New organization
+         * Nueva organización
          */
-        new_institution('Comedor', 'organization@gmail.com', Role::ROLE_ORGANIZATION);
+        createUser('organizacion1@balimentario.com', $globalPassword, Role::ROLE_ORGANIZATION, 'Comedor 1');
+        createUser('organizacion2@balimentario.com', $globalPassword, Role::ROLE_ORGANIZATION, 'Comedor 2');
+        createUser('organizacion3@balimentario.com', $globalPassword, Role::ROLE_ORGANIZATION, 'Comedor 3');
+        createUser('organizacion4@balimentario.com', $globalPassword, Role::ROLE_ORGANIZATION, 'Comedor 4');
     }
 }

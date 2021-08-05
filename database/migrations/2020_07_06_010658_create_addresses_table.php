@@ -17,8 +17,8 @@ class CreateAddressesTable extends Migration
             $table->bigIncrements('address_id');
             $table->string('street', 50);
             $table->integer('number');
-            $table->tinyInteger('floor')->nullabe();
-            $table->string('apt', 4)->nullabe();
+            $table->tinyInteger('floor')->nullable($value = true);
+            $table->string('apt', 4)->nullable($value = true);
             // Neighborhood key
             $table->unsignedSmallInteger('neighborhood_id');
             $table->foreign('neighborhood_id')->references('neighborhood_id')->on('neighborhoods');

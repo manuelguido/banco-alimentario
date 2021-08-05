@@ -12,20 +12,11 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
-        $admin = new Role;
-        $admin->role = Role::ROLE_ADMIN;
-        $admin->save();
-
-        $employee = new Role;
-        $employee->role = Role::ROLE_EMPLOYEE;
-        $employee->save();
-
-        $giver = new Role;
-        $giver->role = Role::ROLE_GIVER;
-        $giver->save();
-
-        $organization = new Role;
-        $organization->role = Role::ROLE_ORGANIZATION;
-        $organization->save();
+        $roles = [Role::ROLE_ADMIN, Role::ROLE_EMPLOYEE, Role::ROLE_GIVER, Role::ROLE_ORGANIZATION];
+        foreach ($roles as $role) {
+            $new = new Role;
+            $new->role = $role;
+            $new->save();
+        }
     }
 }

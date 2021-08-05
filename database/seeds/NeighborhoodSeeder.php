@@ -12,22 +12,29 @@ class NeighborhoodSeeder extends Seeder
      */
     public function run()
     {
-
-        function new_neighborhood($name)
-        {
-            $neighborhood = new Neighborhood;
-            $neighborhood->neighborhood = $name;
-            $neighborhood->save();
-        }
-
         $neighborhoods = [
             'Abasto',
             'Arana',
+            'Etcheverry',
+            'Olmos',
+            'Los hornos',
+            'Altos San Lorenzo',
+            'Villa Elvira',
+            'Romero',
+            'San Carlos',
+            'Tolosa',
+            'Ringuelet',
+            'Gonnet',
+            'Gorina',
+            'City Bell',
+            'Villa Elisa',
+            'Arturo Seguí',
+            'El Peligro',
             'Casco Urbano (Centro)',
         ];
 
         foreach ($neighborhoods as $n) {
-            new_neighborhood($n);
+            Neighborhood::createNewByName($n);
         }
     }
 }
