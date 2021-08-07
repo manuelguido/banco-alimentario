@@ -23,7 +23,8 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        $globalPassword = 'password';
+        $globalPassword = 'password';        
+
         /**
          * Creates new user
          *
@@ -43,6 +44,21 @@ class UserSeeder extends Seeder
         }
 
         /**
+         * Generar nombres y apellidos para datos.
+         * @return String.
+         */
+        function generateName($last = false)
+        {
+            $names = ['María', 'Pedro', 'Juan', 'Rodrigo', 'Carla', 'Pilar', 'Eugenio'];
+            return $names[rand(0, (count($names)-1))];
+        }
+        function generateLastName()
+        {
+            $lastnames = ['López', 'Gutierrez', 'Gómez'];
+            return $lastnames[rand(0, (count($lastnames)-1))];
+        }
+
+        /**
          * Crear información aleatoria de un usuario
          *
          * @return Array
@@ -51,8 +67,8 @@ class UserSeeder extends Seeder
         {
             return [
                 'user_id' => $user_id,
-                'name' => Str::random(6),
-                'lastname' => Str::random(6),
+                'name' => generateName(),
+                'lastname' => generateLastname(),
                 'phone' => mt_rand(1000000, 99999999),
                 'document_type_id' => 1,
                 'document_number' => mt_rand(1000000, 99999999),
