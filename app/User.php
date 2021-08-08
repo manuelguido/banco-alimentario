@@ -2,18 +2,27 @@
 
 namespace App;
 
+use Laravel\Passport\HasApiTokens;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 use DB;
+use Hash;
 use App\Role;
-
+use App\UserData;
 
 class User extends Authenticatable
 {
-    use Notifiable, SoftDeletes;
+    /**
+     * User routes.
+     */
+    const USER_ROUTES = [
+        ['icon' => 'iconly-boldProfile', 'name' => 'Cuenta', 'url' => '/user'],
+    ];
+
+    use HasApiTokens, Notifiable, SoftDeletes;
 
     /**
     * Attributes
@@ -46,17 +55,16 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-
     /**
-     * Returns the user information
+     * Infromación del usuario
      */
-    public function user_data()
+    public function userData()
     {
-        return $this->hasOne('App\UserData', 'user_id');
+        return $this->hasOne(UserData::class, 'user_id', 'user_id');
     }
 
     /**
-     * Returns the user roles
+     * Roles del usuario.
      */
     public function roles()
     {
@@ -64,7 +72,7 @@ class User extends Authenticatable
     }
 
     /**
-     * Returns the user permissions
+     * Permisos del usuario.
      */
     public function permissions()
     {
@@ -72,7 +80,7 @@ class User extends Authenticatable
     }
 
     /**
-     * Returns the user giver
+     * Donante correspondiente al usuario.
      */
     public function giver()
     {
@@ -81,7 +89,7 @@ class User extends Authenticatable
     }
 
     /**
-     * Returns the user organization
+     * Organización correspondiente al usuario.
      */
     public function organization()
     {
@@ -91,32 +99,78 @@ class User extends Authenticatable
 
 
     /**
-     * Returns the unsubscribe requests made by the user
+     * Solicitudes de desuscripción hechas por el usuario.
      */
-    public function unsubscribe_requests()
+    public function unsubscribeRequests()
     {
         return $this->hasMany('App\UnsubscribeRequest', 'user_id', 'user_id');
     }
 
     /**
-     * Returns the unsubscribe requests confirmed by the user
+     * Solicitudes de desuscripción aprobadas por el usuario.
      */
-    public function unsubscribe_requests_confirmed()
+    public function unsubscribeRequestsConfirmed()
     {
         return $this->hasMany('App\UnsubscribeRequest', 'confirmer_id', 'user_id');
     }
 
     /**
-     * Returns the unsubscribe requests confirmed by the user
+     * Crear un nuevo usuario.
+     * @return App\User.
      */
-    public function set_role($role)
+    public static function createNew($data, $is_active)
     {
-        // Gets role id
+        $user = new User;
+        $user->email = $data['email'];
+        $user->password = Hash::make($data['password']);
+        $user->is_active = $is_active;
+        $user->save();
+        return $user;
+    }
+
+    /**
+     * Ver que el usuario tenga un rol.
+     * @return Boolean;
+     */
+    public function hasRole($role)
+    {
+        $result = Role::where([
+            ['roles.role', '=', $role],
+            ['role_user.user_id', '=', $this->user_id]
+            ])
+            ->join('role_user', 'role_user.role_id', '=', 'roles.role_id')
+            ->count();
+        
+        return ($result > 0);
+    }
+
+
+    /**
+     * Añadir rol a un usuario.
+     * @return void.
+     */
+    public function setRole($role)
+    {
         $role_id = Role::where('role', $role)->get()->first()->role_id;
-        // Saves the role
         DB::table('role_user')->insert([
             'user_id' => $this->user_id,
             'role_id' => $role_id,
         ]);
+    }
+
+    /**
+     * Obtener todos los datos de un usuario.
+     * @return Array.
+     */
+    public function data($role)
+    {
+        $user_data = $this->userData()->get();
+        return [
+            'name' => $user_data->name,
+            'lastname' => $user_data->lastname,
+            'phone' => $user_data->phone,
+            'document_type' => $this->userData()->get()->document_type()->get()->document_type,
+            'document_number' => $user_data->document_number,
+        ];
     }
 }
