@@ -5,65 +5,61 @@ import 'mdbvue/lib/css/mdb.min.css';
 import '../css/lightseed.css'
 import '../css/main.css'
 import '../css/fonts.css'
-// Waves
-import Waves from 'vue-waves-effect';
-import 'vue-waves-effect/dist/vueWavesEffect.css';
 
 window.Vue = require('vue');
 
+// Waves
+import Waves from 'vue-waves-effect';
+import 'vue-waves-effect/dist/vueWavesEffect.css';
+Vue.use(Waves);
+
 // Vue, mainapp + router
 import Vue from 'vue';
-import App from './views/App';
+import App from './App.vue';
 import router from './router';
 import store from './store';
 
 // Mixins
 import assetMixin from './mixins/assetMixin'
-Vue.mixin(assetMixin)
+Vue.mixin(assetMixin);
 
-Vue.use(Waves);
-
-/**
- *  Components 
- *
- */
-// Navigation
-Vue.component('navbar', require('./components/navigation/Navbar.vue').default);
-// Titles
-Vue.component('h-title', require('./components/title/HTitle.vue').default);
-// Forms
-Vue.component('form-label', require('./components/forms/Label.vue').default);
+// Page title
+import VuePageTitle from 'vue-page-title'
+Vue.use(VuePageTitle)
 
 /**
- * Home components
+ * Components
  */
-// Content
-Vue.component('home-content', require('./components/pages/home/Content.vue').default);
+Vue.component('loading-overlay', require('./components/loading/overlay.vue').default);
+Vue.component('loading-dots', require('./components/loading/dots.vue').default);
 
 /**
- * Auth components
+ * Progressbar
  */
-// Navigation
-Vue.component('login-card', require('./components/auth/LoginCard.vue').default);
-// Submit button
-Vue.component('submit-button', require('./components/buttons/Submit.vue').default);
-// Submit button
-Vue.component('account-button', require('./components/navigation/AccountButton.vue').default);
+import VueProgressBar from 'vue-progressbar'
 
-/**
- * Dashboard components
- */
-// Navigation
-Vue.component('dashboard-navigation', require('./components/dashboard/navigation/Navigation.vue').default);
-// Navigation
-Vue.component('dashboard', require('./views/layouts/Dashboard.vue').default);
+const options = {
+  color: '#ccedd7',
+  failedColor: '#1d252d',
+  thickness: '3px',
+  transition: {
+    speed: '1s',
+    opacity: '1',
+    termination: 300
+  },
+  autoRevert: true,
+  location: 'top',
+  inverse: false
+}
+
+Vue.use(VueProgressBar, options)
 
 /**
  * Application
  */
 new Vue({
-    el: '#app',
-    components: { App },
-    router,
-    store
-  }).$mount('#app')
+  el: '#app',
+  components: { App },
+  router,
+  store
+}).$mount('#app')
