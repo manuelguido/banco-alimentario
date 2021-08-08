@@ -12,7 +12,6 @@ use Psr\Http\Message\ServerRequestInterface;
 
 class AuthController extends Controller
 {
-
     // login-authen function
     protected $server;
     protected $tokens;
@@ -49,5 +48,4 @@ class AuthController extends Controller
         
         return response()->json('Cierre de sesión exitoso.', 200);
     }
-
 }

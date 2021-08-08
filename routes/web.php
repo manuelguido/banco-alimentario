@@ -1,7 +1,7 @@
 <?php
 
 // SPA
-Route::get('/{any?}', 'SpaController@index');
+Route::get('/{any}', 'HomeController@index')->where('any', '.*');
 
 /**--------------------------------------------------------------
  * 
