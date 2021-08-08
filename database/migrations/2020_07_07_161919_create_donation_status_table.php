@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDonationStatesTable extends Migration
+class CreateDonationStatusTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateDonationStatesTable extends Migration
      */
     public function up()
     {
-        Schema::create('donation_states', function (Blueprint $table) {
-            $table->tinyIncrements('donation_state_id');
-            $table->string('state', 40);
+        Schema::create('donation_status', function (Blueprint $table) {
+            $table->tinyIncrements('donation_status_id');
+            $table->string('status', 40);
         });
     }
 
@@ -26,6 +26,6 @@ class CreateDonationStatesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('donation_states');
+        Schema::dropIfExists('donation_status');
     }
 }

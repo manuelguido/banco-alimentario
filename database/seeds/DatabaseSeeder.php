@@ -15,9 +15,10 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class, // Done
             DocumentTypeSeeder::class, // Done
             NeighborhoodSeeder::class, //Done
-            UserSeeder::class,
+            UserSeeder::class, // Done
             TypeSeeder::class, // Done
             CategorySeeder::class, // Done
+            DonationStatusSeeder::class, // Done
         ]);
     }
 }
