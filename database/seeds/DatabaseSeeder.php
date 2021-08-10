@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
             DocumentTypeSeeder::class, // Done
             NeighborhoodSeeder::class, //Done
             UserSeeder::class, // Done
-            TypeSeeder::class, // Done
+            CategoryTypeSeeder::class, // Done
             CategorySeeder::class, // Done
             DonationStatusSeeder::class, // Done
         ]);

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddTypeIdToCategoriesTable extends Migration
+class AddCategoryTypeIdToCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,8 +14,8 @@ class AddTypeIdToCategoriesTable extends Migration
     public function up()
     {
         Schema::table('categories', function (Blueprint $table) {
-            $table->unsignedSmallInteger('type_id');
-            $table->foreign('type_id')->references('type_id')->on('types');
+            $table->unsignedSmallInteger('category_type_id');
+            $table->foreign('category_type_id')->references('category_type_id')->on('category_types');
         });
     }
 
