@@ -38,6 +38,9 @@ class UserSeeder extends Seeder
             if ($role == Role::ROLE_GIVER || $role == Role::ROLE_ORGANIZATION) {
                 Institution::createNew($user->user_id, generateInstitution($user->user_id, $name));
                 Address::createNew($user->user_id, generateAddress($user->user_id));
+                if ($role == Role::ROLE_GIVER) {
+                    Giver::createNew($user->user_id);
+                }
             }
         }
 
