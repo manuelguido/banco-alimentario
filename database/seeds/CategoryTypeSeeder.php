@@ -12,7 +12,7 @@ class CategoryTypeSeeder extends Seeder
      */
     public function run()
     {
-        $category_types = ['Alimentos', 'Limpieza'];
+        $category_types = ['Alimentos', 'Productos de limpieza'];
 
         foreach ($category_types as $ct) {
             CategoryType::createNew($ct);

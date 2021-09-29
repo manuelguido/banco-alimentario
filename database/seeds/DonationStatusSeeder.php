@@ -13,11 +13,12 @@ class DonationStatusSeeder extends Seeder
     public function run()
     {
         $status_array = [
-           DonationStatus::STATUS_PENDING, 
-           DonationStatus::STATUS_ACCEPTED,
-           DonationStatus::STATUS_FINISHED,
-           DonationStatus::STATUS_CANCELED,
-           DonationStatus::STATUS_REJECTED,
+            DonationStatus::STATUS_CREATING,
+            DonationStatus::STATUS_PENDING, 
+            DonationStatus::STATUS_ACCEPTED,
+            DonationStatus::STATUS_FINISHED,
+            DonationStatus::STATUS_CANCELED,
+            DonationStatus::STATUS_REJECTED,
         ];
 
         foreach ($status_array as $status) {
