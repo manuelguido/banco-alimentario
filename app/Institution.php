@@ -37,9 +37,22 @@ class Institution extends Model
         'email_verified_at' => 'datetime',
     ];
 
+    /**
+     * Crear nueva institución.
+     */
+    public static function createNew($user_id, $data)
+    {
+        $institution = new Institution;
+        $institution->user_id = $user_id;
+        $institution->institution = $data['institution'];
+        $institution->cuit = $data['cuit'];
+        $institution->phone = $data['phone'];
+        $institution->save();
+        return $institution;
+    }
 
     /**
-     * Returns the giver
+     * Obtener el donante de la institución
      */
     public function giver()
     {
@@ -47,7 +60,7 @@ class Institution extends Model
     }
 
     /**
-     * Returns the giver
+     * Obtener la organización de la institución
      */
     public function organization()
     {
@@ -55,7 +68,7 @@ class Institution extends Model
     }
 
     /**
-     * Returns the addresses
+     * Obtener las direcciones de la institución
      */
     public function addresses()
     {

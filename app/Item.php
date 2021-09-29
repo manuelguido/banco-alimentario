@@ -34,4 +34,17 @@ class Item extends Model
         return $this->hasOne('App\ExpirationDate', 'product_id', 'product_id');
     }
     
+    /**
+     * Crear un item nuevo en una donación.
+     * @return App\Item.
+     */
+    public static function createItem($data, $product_id, $donation_id)
+    {
+        $item = new Item;
+        $item->product_id = $product_id;
+        $item->donation_id = $donation_id;
+        $item->amount = $data['amount'];
+        $item->save();
+        return $item;
+    }
 }

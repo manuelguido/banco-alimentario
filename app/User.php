@@ -84,8 +84,15 @@ class User extends Authenticatable
      */
     public function giver()
     {
-        return $this->hasOne('App\Giver', 'user_id')
-            ->join('insitutions', 'insitutions.user_id', '=', 'givers.user_id');
+        return $this->hasOne('App\Giver', 'user_id', 'user_id');
+    }
+
+    /**
+     * Donante correspondiente al usuario.
+     */
+    public function giverWithInstitution()
+    {
+        return $this->giver()->join('institutions', 'institutions.user_id', '=', 'givers.user_id');
     }
 
     /**

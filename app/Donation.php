@@ -14,7 +14,7 @@ class Donation extends Model
     protected $primaryKey = 'donation_id';
 
     protected $fillable = [
-        'user_id', 'user_responsable_id', 'donation_state_id', 'code',
+        'user_id', 'user_responsable_id', 'donation_status_id', 'code',
     ];
 
     public $timestamps = false;
@@ -54,5 +54,20 @@ class Donation extends Model
     // public function nearestExpiration() {
     //     return Product::where('donation_id', $this->donation_id)->orderBy('exp_date', 'desc')->first();
     // }
+
+    /**
+     * Crear donación en estado de creación (Aún pueden agregarse items).
+     * @return App\Donation.
+     */
+    public static function createCurrentDonation($user_id)
+    {
+        $status = DonationStatus::where('status', '=', DonationStatus::STATUS_CREATING)->first();
+        $donation = new Donation();
+        $donation->user_id = $user_id;
+        $donation->user_responsable_id = NULL;
+        $donation->donation_status_id = $status->donation_status_id;
+        $donation->save();
+        return $donation;
+    }
 
 }

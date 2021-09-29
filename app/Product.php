@@ -50,4 +50,19 @@ class Product extends Model
     {
         return $this->belongsTo('App\UnitOfMeasurement', 'unit_of_measurement_id', 'unit_of_measurement_id');
     }
+
+    /**
+     * Crear un producto nuevo.
+     * @return App\Product.
+     */
+    public static function createProduct($data)
+    {
+        $product = new Product;
+        $product->product = $data['product'];
+        $product->category_id = $data['category_id'];
+        $product->unit_of_measurement_id = $data['unit_of_measurement_id'];
+        $product->is_refrigerable = $data['is_refrigerable'];
+        $product->save();
+        return $product;
+    }
 }

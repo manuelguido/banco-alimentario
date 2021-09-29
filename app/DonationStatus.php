@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class DonationStatus extends Model
 {
+    const STATUS_CREATING = 'Creando';
     const STATUS_PENDING = 'Pendiente';
     const STATUS_ACCEPTED = 'Aceptada';
     const STATUS_FINISHED = 'Finalizada';

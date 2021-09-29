@@ -24,4 +24,15 @@ class UnitOfMeasurement extends Model
         return $this->hasMany('App\Product', 'unit_of_measurement_id', 'unit_of_measurement_id');
     }
 
+    /**
+     * Crear una nueva unidad de medida.
+     * @return App\UnitOfMeasurement.
+     */
+    public static function createNew($new_uom)
+    {
+        $uom = new UnitOfMeasurement;
+        $uom->unit_of_measurement = $new_uom;
+        $uom->save();
+        return $uom;
+    }
 }

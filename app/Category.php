@@ -14,7 +14,7 @@ class Category extends Model
     protected $primaryKey = 'category_id';
 
     protected $fillable = [
-        'category', 'type_id',
+        'category', 'category_type_id',
     ];
 
     public $timestamps = false;
@@ -24,9 +24,25 @@ class Category extends Model
         return $this->hasMany('App\Product', 'category_id', 'category_id');
     }
 
-    public function type()
+    /**
+     * Tipo de producto.
+     * @return App\ProductType.
+     */
+    public function productType()
     {
-        return $this->belongsTo('App\Type', 'type_id', 'type_id');
+        return $this->belongsTo('App\ProductType', 'type_id', 'type_id');
     }
 
+    /**
+     * Crear una nueva categoría.
+     * @return App\Category.
+     */
+    public static function createNew($data)
+    {
+        $category = new Category;
+        $category->category = $data['category'];
+        $category->category_type_id = $data['category_type_id'];
+        $category->save();
+        return $category;
+    }
 }
