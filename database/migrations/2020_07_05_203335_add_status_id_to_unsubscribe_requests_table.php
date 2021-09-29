@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddStateIdToUnsubscribeRequestsTable extends Migration
+class AddStatusIdToUnsubscribeRequestsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,8 +14,8 @@ class AddStateIdToUnsubscribeRequestsTable extends Migration
     public function up()
     {
         Schema::table('unsubscribe_requests', function (Blueprint $table) {
-            $table->unsignedTinyInteger('unsubscribe_state_id');
-            $table->foreign('unsubscribe_state_id')->references('unsubscribe_state_id')->on('unsubscribe_states');
+            $table->unsignedTinyInteger('unsubscribe_status_id');
+            $table->foreign('unsubscribe_status_id')->references('unsubscribe_status_id')->on('unsubscribe_status');
         });
     }
 

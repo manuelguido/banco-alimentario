@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             CategoryTypeSeeder::class, // Done
             CategorySeeder::class, // Done
             DonationStatusSeeder::class, // Done
+            UnitsOfMeasuementSeeder::class, // Done
         ]);
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUnsubscribeStatesTable extends Migration
+class CreateUnsubscribeStatusTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateUnsubscribeStatesTable extends Migration
      */
     public function up()
     {
-        Schema::create('unsubscribe_states', function (Blueprint $table) {
-            $table->tinyIncrements('unsubscribe_state_id');
-            $table->string('state', 20);
+        Schema::create('unsubscribe_status', function (Blueprint $table) {
+            $table->tinyIncrements('unsubscribe_status_id');
+            $table->string('status', 20);
         });
     }
 
@@ -26,6 +26,6 @@ class CreateUnsubscribeStatesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('unsubscribe_states');
+        Schema::dropIfExists('unsubscribe_status');
     }
 }
