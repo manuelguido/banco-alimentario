@@ -4,22 +4,136 @@ use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
-| API Routes
+| API de autenticación
 |--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
 */
+// Login
+Route::post('/login', 'AuthController@login'); // Works
+// Logout
+Route::post('/logout', 'AuthController@logout')->middleware('auth:api'); // Works
 
-// User
+/*
+|--------------------------------------------------------------------------
+| API de registro
+|--------------------------------------------------------------------------
+*/
+// Registrar donante
+Route::post('/register/giver', 'RegisterController@registerGiver'); // ??
+
+/*
+|--------------------------------------------------------------------------
+| API de autenticación con Google
+|--------------------------------------------------------------------------
+*/
+// Autorización
+// Route::get('/authorize/google', 'SocialAuthController@redirectToProvider')->name('api.social.redirect'); // Funciona
+// Ruta de callback
+// Route::get('/authorize/google/callback', 'SocialAuthController@handleProviderCallback')->name('api.social.callback'); // Funciona
+
+/*
+|--------------------------------------------------------------------------
+| API de barrios
+|--------------------------------------------------------------------------
+*/
+// Validar si un email esta disponible
+Route::get('/email/check-availability', 'EmailController@emailAvailable'); // Funciona
+
+/*
+|--------------------------------------------------------------------------
+| API de barrios
+|--------------------------------------------------------------------------
+*/
+// Barrios
+Route::get('/neighborhood/index', 'NeighborhoodController@neighborhoodIndex'); // Funciona
+
+/*
+|--------------------------------------------------------------------------
+| API de tipos de documentos
+|--------------------------------------------------------------------------
+*/
+// Tipos de documentos
+Route::get('/document-type/index', 'DocumentTypeController@index'); // Funciona
+
+/*
+|--------------------------------------------------------------------------
+| API de unidades de medida
+|--------------------------------------------------------------------------
+*/
+// Tipos de documentos
+Route::get('/unit-of-measurement/index', 'UnitOfMeasurementController@index'); // Funciona
+
+/*
+|--------------------------------------------------------------------------
+| API de categorías
+|--------------------------------------------------------------------------
+*/
+// Categorías
+Route::get('/category/index', 'CategoryController@index'); // Funciona
+
+/*
+|--------------------------------------------------------------------------
+| API de tipos de productos
+|--------------------------------------------------------------------------
+*/
+// Categorías
+Route::get('/category-type/index', 'CategoryTypeController@index'); // Funciona
+
+/*
+|--------------------------------------------------------------------------
+| API de usuario
+|--------------------------------------------------------------------------
+*/
 Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+  	return $request->user();
 });
 
-// // Login
-// Route::post('/login', 'AuthController@login');
+Route::prefix('/user')->middleware('auth:api')->group(function() {
+	// Obtener información de usuario
+	Route::get('/data', 'UserController@data'); // ?
+	// Get user and it's routes
+	Route::post('/update', 'UserController@update'); // ?
+	// Get user and it's routes
+	Route::post('/password/update', 'UserController@updatePassword'); // ?
 
-// // Logout
-// Route::middleware('auth:api')->post('/logout', 'AuthController@logout');
+	// Administrador Routes
+	Route::prefix('/')->middleware('role:Administrador')->group(function() {
+		// Update user
+		Route::get('/index', 'UserController@index'); // ?
+		// Update user
+		Route::get('/index_formatted', 'UserController@indexFormatted'); // ?
+		// Update user password
+		Route::post('/update/approve', 'UserController@approveUpdate'); // ?
+		// Delete user
+		Route::post('/delete', 'UserController@delete'); // ?
+	});
+});
+
+/*
+|--------------------------------------------------------------------------
+| API de donantes
+|--------------------------------------------------------------------------
+*/
+Route::prefix('/giver')->middleware('auth:api')->group(function() { //, 'role:Donante'
+	// Donaciones
+	Route::prefix('/donation')->group(function() {
+		// Crear una nueva donación
+		Route::post('/create', 'DonationController@create'); // ??
+		// Editar donación
+		Route::post('/update', 'DonationController@update'); // ??
+		// Pendientes endientes
+		Route::get('/pending/dataset', 'DonationController@giverPending'); // ??
+		// Terminadas
+		Route::get('/finished/dataset', 'DonationController@giverFinished'); // ??
+		// Rechazadas
+		Route::get('/rejected/dataset', 'DonationController@giverRejected'); // ??
+		// Items
+		Route::prefix('/item')->group(function() {
+			// Agregar
+			Route::post('/add', 'DonationController@addItem'); // ??
+			// Modificar
+			Route::post('/update', 'DonationController@updateItem'); // ??
+			// Eliminar
+			Route::post('/delete', 'DonationController@deleteItem'); // ??
+    	});
+  	});
+});
