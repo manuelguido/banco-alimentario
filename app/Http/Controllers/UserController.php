@@ -34,15 +34,20 @@ class UserController extends Controller
         // Datos de usuario
         $user_data = $user->userData()->first();
         $data = ['name' => $user_data->name, 'lastname' => $user_data->lastname, 'email' => $user->email];
-        // Roles
+        // Roles y permisos
         $roles = [];
         foreach ($user->roles as $role) {
             array_push($roles, $role->role);
         }
+        $permissions = [];
+        // foreach ($user->permissions as $permission) {
+        //     array_push($permissions, $permission->permission);
+        // }
         return response()->json([
-            'user' => $data,
-            'roles' => $roles,
-            'routes' => $this->getUserRoutes($user),
+            'user_data' => $data,
+            'user_roles' => $roles,
+            'user_permissions' => $permissions,
+            'user_routes' => $this->getUserRoutes($user),
         ]);
     }
 }

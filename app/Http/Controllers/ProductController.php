@@ -13,11 +13,10 @@ use Datetime;
 
 class ProductController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
+    /**
+     * Guardar producto frecuente.
+     * @return JSON.
+     */
     public function save(Request $request)
     {
         //Guardar producto
@@ -117,7 +116,22 @@ class ProductController extends Controller
         return redirect()->back()->with(['success' => 'Se agregó un nuevo producto']);
     }
 
-    public function delete($id)
+    /**
+     * Modificar producto frecuente.
+     * @return JSON.
+     */
+    public function frequentProductUpdate($id)
+    {
+        DB::table('products')->where('product_id', '=' , $id)->delete();
+
+        return redirect()->back()->with(['success' => 'Eliminaste correctamente el producto']);
+    }
+
+    /**
+     * Eliminar producto frecuente.
+     * @return JSON.
+     */
+    public function frequentProductDelete($id)
     {
         DB::table('products')->where('product_id', '=' , $id)->delete();
 

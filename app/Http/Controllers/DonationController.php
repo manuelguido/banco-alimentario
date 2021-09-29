@@ -2,152 +2,137 @@
 
 namespace App\Http\Controllers;
 
-use App\Donation;
-use App\Product;
 use Egulias\EmailValidator\Exception\DotAtEnd;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use DB;
-use User;
 use Carbon\Carbon;
+use App\Donation;
+use App\Product;
+use App\Item;
+use User;
+use DB;
 
 class DonationController extends Controller
 {
-
-    public function __construct()
+    /**
+     * Validar item de donación
+     * @return void.
+     */
+    private function validateDonationItem($data)
     {
-        $this->middleware('auth');
+        $this->validate($data, [
+            'product' => 'string|required',
+            'amount' => 'numeric|required',
+            'category_id' => 'numeric|required',
+            'unit_of_measurement_id' => 'numeric|required',
+            'is_refrigerable' => 'boolean|required',
+            'exp_date' => 'date|string|sometimes',
+        ]);
     }
 
-    public function end()
+    /**
+     * Elementos de dataset para visualización de datos.
+     * @return Array.
+     */
+    private function getDonationTableColumns() {
+        return [
+            [
+                'label' => 'asd',
+                'field' => 'id',
+                'sort' => false,
+                'id' => true,
+                'mobile' => false,
+            ],
+            [
+                'label' => 'Fecha',
+                'field' => 'name',
+                'sort' => 'asc',
+                'mobile' => true,
+            ],
+            [
+                'label' => 'Cantidad de productos',
+                'field' => 'email',
+                'sort' => 'asc',
+                'mobile' => false,
+            ],
+        ];
+    }
+
+    /**
+     * Busqueda de datos para tablas.
+     * @return Collection.
+     */
+    private function getDonationTableRows($user_id)
     {
-        DB::table('donations')
-            ->where([
-                ['user_id', '=', Auth::user()->id],
-                ['status', '=', 'CREANDO'],
+        $donations = Donation::where([
+            ['users.user_id', '=', $user_id],
+            ['donation_states.state', '=', $user_id]
             ])
-            ->update(['status' => 'FINALIZANDO']);
-        return redirect()->back();
+            ->join('givers', 'givers.giver_id', '=', 'donations.giver_id')    
+            ->join('givers', 'givers.giver_id', '=', 'donations.giver_id')
+            ->join('users', 'users.user_id', '=', 'givers.user_id')
+            ->select('donation.*')
+            ->get();
+        return $donation->sortByDesc('finished_at')->values()->all();
     }
 
-    public function save(Request $request)
+    /**
+     * Donaciones terminadas de un donante.
+     * @return JSON.
+     */
+    public function giverFinished() {
+        $responseData = [
+            'rows' => $this->getDonationTableColumns(),
+            'columns' => []
+        ];
+        return response()->json($responseData);
+    }
+
+    /**
+     * Donaciones terminadas de un donante.
+     * @return JSON.
+     */
+    public function create() {
+        $this->validateDonation();
+        return response()->json($responseData);
+    }
+
+    /**
+     * Actualizar datos de una donación aún por aceptar.
+     * @return JSON.
+     */
+    public function update() {
+        $this->validateDonation();
+        return response()->json($responseData);
+    }
+
+    /**
+     * Cancelar donación.
+     * @return JSON.
+     */
+    public function cancel() {
+        return response()->json($responseData);
+    }
+
+    /**
+     * Añadir item a donación vigente.
+     * @return JSON.
+     */
+    public function addItem(Request $request)
     {
-        //Validar datos de entrada
-        $this->validate($request, [
-            'date-between1' => 'required',
-            'date-between2' => 'required',
-            'hour-between1' => 'required',
-            'hour-between2' => 'required',
-        ]);
+        // try {
+            $this->validateDonationItem($request);
+            $product = Product::createProduct($request);
+            $donation = $request->user()->giver()->first()->currentDonation();
+            if (!$donation) {
+                $donation = Donation::createCurrentDonation($request->user()->user_id);
+            }
+            $item = Item::createItem($request, $product->product_id, $donation->donation_id);
+            $message = ['status' => 'success', 'message' => 'Item agregado.'];
+        // } catch (\Throwable $th) {
+            // $message = ['status' => 'warning', 'message' => 'No ingreses valores no válidos.'];
+        // }
 
-        DB::table('donations')
-            ->where([
-                ['user_id', '=', Auth::user()->id],
-                ['status', '=', 'FINALIZANDO'],
-            ])
-            ->update([
-                'status' => 'VIGENTE',
-                'date_from' => $request['date-between1'],
-                'date_to' => $request['date-between2'],
-                'time_from' => $request['hour-between1'],
-                'time_to' => $request['hour-between2'],
-            ]);
-
-        return redirect()->back()->with(['success' => 'Has creado una nueva donación con éxito.']);
-    }
-
-    public function back()
-    {
-        //Obtengo donación creando
-        $donacion = DB::table('donations')->where([
-            ['user_id', '=', Auth::user()->id],
-            ['status', '=', 'FINALIZANDO'],
-        ])
-            ->update(['status' => 'CREANDO']);
-
-        return redirect()->back();
-    }
-
-    public function delete()
-    {
-        //Obtengo donación creando
-        $donacion = DB::table('donations')->where([
-            ['user_id', '=', Auth::user()->id],
-            ['status', '=', 'CREANDO'],
-        ])->get();
-        //Elimino productos
-        if (count($donacion) > 0) {
-            DB::table('products')->where('donation_id', '=', $donacion[0]->donation_id)->delete();
-            //Elimino donación
-            DB::table('donations')->where('donation_id', '=', $donacion[0]->donation_id)->delete();
-            //Donacion finalizando
-        }
-
-        //Obtengo donación finalizando
-        $donacion = DB::table('donations')->where([
-            ['user_id', '=', Auth::user()->id],
-            ['status', '=', 'FINALIZANDO'],
-        ])->get();
-
-        if (count($donacion) > 0) {
-            //Elimino productos
-            DB::table('products')->where('donation_id', '=', $donacion[0]->donation_id)->delete();
-            //Elimino donación
-            DB::table('donations')->where('donation_id', '=', $donacion[0]->donation_id)->delete();
-        }
-
-        return redirect()->back()->with(['success' => 'Has cancelado la donación con éxito.']);
-    }
-
-    public function retirement_date(Request $request)
-    {
-        $this->validate($request, [
-            'retirement_date' => 'required',
-            'retirement_time' => 'required',
-            'responsible_for_retirement' => 'required',
-        ]);
-        DB::table('donations')
-            ->where([
-                    ['donation_id', '=', $request->donation_id]]
-            )
-            ->update([
-                'status' => Donation::ESTADO_ACEPTADO,
-                'retirement_date' => $request['retirement_date'],
-                'retirement_time' => $request['retirement_time'],
-                'responsible_for_retirement' => $request['responsible_for_retirement'],
-            ]);
-        session(['codigo' => 1]);
-        return redirect()->route('empleado')->with(['success' => "La donación ha sido aceptada correctamente"]);
-
-    }
-
-    public function refuse(Request $request){
-        $this->validate($request, [
-            'reason' => 'required',
-        ]);
-        DB::table('donations')
-            ->where([
-                    ['donation_id', '=', $request->donation_id]]
-            )
-            ->update([
-                'status' => Donation::ESTADO_RECHAZADO,
-                'reason' => $request['reason'],
-            ]);
-        session(['codigo' => 1]);
-        return redirect()->route('empleado')->with(['success' => "La donación ha sido rechazada correctamente"]);
-    }
-
-    public function completed($donation_id){
-
-        DB::table('donations')
-            ->where([
-                    ['donation_id', '=', $donation_id]]
-            )
-            ->update([
-                'status' => Donation::ESTADO_COMPLETADO,
-
-            ]);
-        session(['codigo' => 0]);
-        return redirect()->route('empleado')->with(['success' => "La donación ha sido completada"]);
+        return response()->json($message);
     }
 }
