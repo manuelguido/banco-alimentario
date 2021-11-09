@@ -88,6 +88,17 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::prefix('/user')->middleware('auth:api')->group(function() {
+	// Corroborar que el usuario este autenticado
+	Route::prefix('/authenticated')->group(function() {
+		// Corroborar que sea un usuario en el sistema
+		Route::get('/', 'AuthController@userIsAuthenticated'); // Works
+		// Corroborar que el usuario sea donante
+		Route::get('/giver', 'AuthController@userIsGiver'); // ?
+		// Corroborar que el usuario sea empleado
+		Route::get('/employee', 'AuthController@userIsEmployee'); // ?
+		// Corroborar que el usuario sea administrador
+		Route::get('/admin', 'AuthController@userIsAdmin'); // ?
+	});
 	// Obtener información de usuario
 	Route::get('/data', 'UserController@data'); // ?
 	// Get user and it's routes
@@ -121,19 +132,23 @@ Route::prefix('/giver')->middleware('auth:api')->group(function() { //, 'role:Do
 		// Editar donación
 		Route::post('/update', 'DonationController@update'); // ??
 		// Pendientes endientes
-		Route::get('/pending/dataset', 'DonationController@giverPending'); // ??
+		Route::get('/pending/dataset', 'GiverController@pendingDonations'); // ??
 		// Terminadas
-		Route::get('/finished/dataset', 'DonationController@giverFinished'); // ??
+		Route::get('/finished/dataset', 'GiverController@finishedDonations'); // ??
 		// Rechazadas
-		Route::get('/rejected/dataset', 'DonationController@giverRejected'); // ??
+		Route::get('/rejected/dataset', 'GiverController@rejectedDonations'); // ??
 		// Items
 		Route::prefix('/item')->group(function() {
 			// Agregar
-			Route::post('/add', 'DonationController@addItem'); // ??
+			Route::post('/add', 'DonationController@addItem'); // Works
 			// Modificar
 			Route::post('/update', 'DonationController@updateItem'); // ??
 			// Eliminar
-			Route::post('/delete', 'DonationController@deleteItem'); // ??
+			Route::post('/delete', 'DonationController@deleteItem'); // Works
+			// Items de la donación
+			Route::get('/current/index', 'DonationController@currentItems'); // Works
+			// Items de la donación en dataset
+			Route::get('/current/index/dataset', 'DonationController@currentItemsDataset'); // Works
     	});
   	});
 });

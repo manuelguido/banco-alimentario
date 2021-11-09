@@ -26,7 +26,18 @@ class DonationController extends Controller
             'category_id' => 'numeric|required',
             'unit_of_measurement_id' => 'numeric|required',
             'is_refrigerable' => 'boolean|required',
-            'exp_date' => 'date|string|sometimes',
+            'exp_date' => 'date|string|nullable|object',
+        ]);
+    }
+
+    /**
+     * Validar item id de item de donación
+     * @return void.
+     */
+    private function validateItemId($data)
+    {
+        $this->validate($data, [
+            'item_id' => 'numeric|required|min:0',
         ]);
     }
 
@@ -120,7 +131,7 @@ class DonationController extends Controller
      */
     public function addItem(Request $request)
     {
-        // try {
+        try {
             $this->validateDonationItem($request);
             $product = Product::createProduct($request);
             $donation = $request->user()->giver()->first()->currentDonation();
@@ -129,10 +140,59 @@ class DonationController extends Controller
             }
             $item = Item::createItem($request, $product->product_id, $donation->donation_id);
             $message = ['status' => 'success', 'message' => 'Item agregado.'];
-        // } catch (\Throwable $th) {
-            // $message = ['status' => 'warning', 'message' => 'No ingreses valores no válidos.'];
-        // }
+        } catch (\Throwable $th) {
+            $message = ['status' => 'warning', 'message' => 'No ingreses valores no válidos.'];
+        }
 
         return response()->json($message);
+    }
+
+    /**
+     * Eliminar item de donación vigente.
+     * @return JSON.
+     */
+    public function deleteItem(Request $request)
+    {
+        try {
+            $this->validateItemId($request);
+            $item = Item::find($request->item_id);
+            $product = $item->product();
+            $item->delete();
+            $product->delete();
+            $message = ['status' => 'success', 'message' => 'Item eliminado.'];
+        } catch (\Throwable $th) {
+            $message = ['status' => 'warning', 'message' => 'No ingreses valores no válidos.'];
+        }
+        return response()->json($message);
+    }
+
+    /**
+     * Obtener items de una donación vigente
+     * @return JSON.
+     */
+    public function currentItems(Request $request)
+    {
+        $currentDonation = $request->user()->giver()->first()->currentDonation();
+        $responseData = $currentDonation
+            ? $currentDonation->itemsComplete()
+            : [];
+        return response()->json($responseData);
+    }
+
+    /**
+     * Obtener items de una donación vigente en dataset
+     * @return JSON.
+     */
+    public function currentItemsDataset(Request $request)
+    {
+        $currentDonation = $request->user()->giver()->first()->currentDonation();
+        $items = $currentDonation
+            ? $currentDonation->itemsComplete()
+            : [];
+
+        return response()->json([
+            'columns' => $this->getDonationTableColumns(),
+            'rows' => $items,
+        ]);
     }
 }
