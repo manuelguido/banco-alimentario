@@ -14,6 +14,7 @@ class CreateItemsTable extends Migration
     public function up()
     {
         Schema::create('items', function (Blueprint $table) {
+            $table->bigIncrements('item_id');
             $table->unsignedBigInteger('product_id');
             $table->foreign('product_id')->references('product_id')->on('products')->onDelete('cascade');
             $table->unsignedBigInteger('donation_id');

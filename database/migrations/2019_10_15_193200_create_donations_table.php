@@ -15,7 +15,7 @@ class CreateDonationsTable extends Migration
     {
         Schema::create('donations', function (Blueprint $table) {
             $table->bigIncrements('donation_id');
-            $table->unsignedInteger('user_id')->unique();
+            $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('user_id')->on('givers')->onDelete('cascade');
             $table->unsignedInteger('user_responsable_id')->nullable()->default(NULL);
             $table->foreign('user_responsable_id')->references('user_id')->on('users');
